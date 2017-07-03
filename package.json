@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "^15.0.1",
-    "eslint-import-resolver-webpack": "^0.8.3"
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "redux-devtools": "^3.4.0"
   }
 }
