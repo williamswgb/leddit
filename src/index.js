@@ -2,15 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
-import './index.css';
+import './style.css'
 import store from './store'
+import routes from './routes'
 import registerServiceWorker from './registerServiceWorker'
-
-import Home from 'pages/Home' //Will be updated
 
 ReactDOM.render(
   <Provider store={store}>
-    <Home />
+    {routes}
   </Provider>,
   document.getElementById('root')
 )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import logo from './Kappa.gif'
 import './style.css'
@@ -29,11 +30,9 @@ class HomeContainer extends Component {
   }
 }
 
-const ConnectedApp = connect((state) => {
+export default withRouter(connect((state) => {
   const { notifications } = state.Home.data
   return {
     notifications: notifications
   }
-}, { showNotificationWithTimeout })(HomeContainer)
-
-export default ConnectedApp
+}, { showNotificationWithTimeout })(HomeContainer))
