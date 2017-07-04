@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import logo from './logo.svg'
-import './index.css'
-import { showNotificationWithTimeout } from './actions'
+import logo from './Kappa.gif'
+import './style.css'
+import { showNotificationWithTimeout } from './data/notifications/action'
 
-class Home extends Component {
+class HomeContainer extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to Leddit</h2>
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
@@ -30,9 +30,10 @@ class Home extends Component {
 }
 
 const ConnectedApp = connect((state) => {
+  const { notifications } = state.Home.data
   return {
-    notifications: state.notifications
+    notifications: notifications
   }
-}, { showNotificationWithTimeout })(Home)
+}, { showNotificationWithTimeout })(HomeContainer)
 
 export default ConnectedApp
