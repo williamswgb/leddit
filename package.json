@@ -7,6 +7,7 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "react-scripts": "1.0.10",
     "redux": "^3.7.1",
     "redux-thunk": "^2.2.0"
@@ -20,7 +21,6 @@
   "devDependencies": {
     "cross-env": "^5.0.1",
     "eslint": "^4.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "redux-devtools": "^3.4.0"
+    "eslint-plugin-react": "^7.1.0"
   }
 }
