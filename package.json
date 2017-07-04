@@ -11,14 +11,15 @@
     "redux": "^3.7.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_PATH=src react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-import-resolver-webpack": "^0.8.3",
+    "cross-env": "^5.0.1",
+    "eslint": "^4.1.1",
+    "eslint-plugin-react": "^7.1.0",
     "redux-devtools": "^3.4.0"
   }
 }
