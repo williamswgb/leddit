@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import logo from 'logo.svg';
-import './index.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import logo from './logo.svg'
+import './index.css'
+import { showNotificationWithTimeout } from './actions'
 
 class Home extends Component {
   render() {
@@ -13,9 +16,23 @@ class Home extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div>
+          <button onClick={() => this.props.showNotificationWithTimeout('Hello')}>Show "Hello"</button>
+          &nbsp;
+          <button onClick={() => this.props.showNotificationWithTimeout('Async')}>Show "Async"</button>
+          {this.props.notifications.map((notification, index) => {
+            return <h1 key={notification.id}>{notification.text}</h1>
+          })}
+        </div>
       </div>
     );
   }
 }
 
-export default Home;
+const ConnectedApp = connect((state) => {
+  return {
+    notifications: state.notifications
+  }
+}, { showNotificationWithTimeout })(Home)
+
+export default ConnectedApp
