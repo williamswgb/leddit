@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import TopicItem from './components/Item'
-import './style.css'
+import ListView from './listView.js'
 
 class ListContainer extends Component {
   state = {
@@ -19,12 +18,8 @@ class ListContainer extends Component {
 
   render() {
     return (
-      <div className="List">
-        {this.state.dummyTopics.map((topic, i) => (
-          <TopicItem key={`TopicItem-${i}`} data={topic} />
-        ))}
-      </div>
-    );
+      <ListView data={this.state.dummyTopics} />
+    )
   }
 }
 
