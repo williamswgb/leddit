@@ -1,19 +1,32 @@
 import React from 'react'
 import { number, func } from 'prop-types'
 
+import Button from 'components/Button'
 import './style.css'
 
 const VoteView = ({ vote, onClickVote }) => (
   <div className="Vote">
-    <div className="Vote-button" />
+    <Button
+      className="Vote-button"
+      onClick={() => onClickVote(true)}
+      text="^"
+    />
     <div>{vote}</div>
-    <div className="Vote-button" />
+    <Button
+      className="Vote-button"
+      onClick={() => onClickVote(false)}
+      text="V"
+    />
   </div>
 )
 
 VoteView.propTypes = {
   vote: number,
-  onClickVote: func
+  onClickVote: func,
+}
+
+VoteView.defaultProps = {
+  vote: 0,
 }
 
 export default VoteView
