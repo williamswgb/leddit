@@ -19,11 +19,21 @@
   margin: 0rem 1rem;
 }
 
-.Item-vote {
-  width: 2rem;
-  margin: 0rem 1rem;
+.Item-content-container {
+  flex: 1;
+  text-align: left;
 }
 
-.Item-content {
-  flex: 1;
+.Item-main-content {
+  min-height: 4.5rem;
+}
+
+.Item-sub-content {
+  border: 1px solid #369;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.Item-button {
+  margin-top: 0.25rem;
 }
