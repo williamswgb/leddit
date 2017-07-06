@@ -8,6 +8,12 @@ class Button extends PureComponent {
     text: string,
   }
 
+  static defaultProps = {
+    className: null,
+    onClick: null,
+    text: '',
+  }
+
   handleClick = (e) => {
     e.preventDefault()
     if (this.props.onClick) {
