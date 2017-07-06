@@ -18,7 +18,7 @@ class Topic extends Component {
     return (
       <div className="Topic-header">
         <div className="Topic-title-container">
-          <img src={logo} className="Topic-logo" alt="logo" />
+          <Link to="/"><img src={logo} className="Topic-logo" alt="logo" /></Link>
           <div className="Topic-title">
             LEDDIT
           </div>
@@ -35,10 +35,17 @@ class Topic extends Component {
     )
   }
 
+  renderContent() {
+    return (
+      <div className="Topic-content"/>
+    )
+  }
+
   render() {
     return (
       <div className="Topic">
         {this.renderHeader()}
+        {this.renderContent()}
         {/* {Add Route Here} */}
       </div>
     );
