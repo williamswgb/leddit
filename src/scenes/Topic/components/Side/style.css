@@ -1,3 +1,13 @@
 .Side {
-  width: 20rem
+  width: 20rem;
+}
+
+.Side-button {
+  padding: 0.5rem;
+  height: 6rem;
+  background: #111214;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
