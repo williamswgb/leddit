@@ -14,13 +14,14 @@ class Item extends PureComponent {
 
   static defaultProps = {
     data: {},
+    index: null,
   }
 
   state = {
-    isExpanded: this.props.index === undefined,
+    isExpanded: this.props.index === null,
   }
 
-  handleClickExpand = this.props.index === undefined ? false : () => {
+  handleClickExpand = this.props.index === null ? null : () => {
     this.setState({ isExpanded: !this.state.isExpanded })
   }
 
@@ -40,11 +41,14 @@ class Item extends PureComponent {
         <TextLink to={`/topic/${data.id}`}>
           <div className="Item-title">{data.title}</div>
         </TextLink>
-        <Button
-          className="Item-button"
-          onClick={this.handleClickExpand}
-          text={this.state.isExpanded ? 'Hide' : 'Show'}
-        />
+        {
+          this.props.index === null ? null :
+          <Button
+            className="Item-button"
+            onClick={this.handleClickExpand}
+            text={this.state.isExpanded ? 'Hide' : 'Show'}
+          />
+        }
       </div>
     )
   }
@@ -52,7 +56,7 @@ class Item extends PureComponent {
   renderIndex() {
     const { index } = this.props
 
-    return index === undefined ? false :
+    return index === null ? null :
       <div className="Item-index">{index}</div>
   }
 
