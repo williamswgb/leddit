@@ -3,6 +3,7 @@ import { func, string } from 'prop-types'
 
 class Button extends PureComponent {
   static propTypes = {
+    className: string,
     onClick: func,
     text: string,
   }
@@ -16,10 +17,11 @@ class Button extends PureComponent {
 
   render() {
     return (
-        <button
-          onClick={this.handleClick}>
-          {this.props.text}
-        </button>
+      <button
+        className={this.props.className}
+        onClick={this.handleClick}>
+        {this.props.text}
+      </button>
     );
   }
 }
