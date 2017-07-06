@@ -5,8 +5,8 @@ import './style.css'
 
 import Header from './components/Header'
 import Side from './components/Side'
-
 import List from './scenes/List'
+import Detail from './scenes/Detail'
 
 class Topic extends Component {
   renderContent() {
@@ -18,6 +18,7 @@ class Topic extends Component {
             <Route exact path="/topic" component={List} />
             <Route path="/topic/create" />
             <Route path="/topic/search" />
+            <Route path="/topic/:id" component={Detail} />
             <Route path="/topic/:category" component={List} />
           </Switch>
         </div>
