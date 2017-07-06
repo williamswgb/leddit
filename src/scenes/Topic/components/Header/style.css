@@ -1,0 +1,25 @@
+.Header {
+  background: url(./images/banner.png) no-repeat #0e1a1e;
+  height: 8.25rem;
+  padding: 1.25rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.Header-container {
+  display: flex;
+  align-items: center;
+}
+
+.Header-title {
+  text-align: left;
+  font-size: 4rem;
+  margin-left: 0.5rem;
+}
+
+.Header-logo {
+  height: 4.5rem;
+}

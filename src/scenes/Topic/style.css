@@ -1,39 +1,3 @@
 .Topic {
   text-align: center;
 }
-
-.Topic-header {
-  background: url(./images/banner.png) no-repeat #0e1a1e;
-  height: 8.25rem;
-  padding: 1.25rem;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-}
-
-.Topic-title-container {
-  display: flex;
-  align-items: center;
-}
-
-.Topic-title {
-  text-align: left;
-  font-size: 4rem;
-  margin-left: 0.5rem;
-}
-
-.Topic-logo {
-  height: 4.5rem;
-}
-
-.Topic-category-container {
-  display: flex;
-  position: absolute;
-  bottom: 0;
-}
-
-.Topic-category {
-  margin: 0rem 1rem
-}

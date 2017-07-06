@@ -1,0 +1,9 @@
+.NavLink {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.NavLink-category {
+  margin: 0rem 1rem
+}
