@@ -1,0 +1,19 @@
+.Create {
+  width: 32.5rem;
+  text-align: left;
+}
+
+.Create-input-container {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  font-size: 1.125rem;
+}
+
+.Create-input {
+  width: 100%;
+}
+
+.Create-input-text {
+  height: 5rem;
+}
