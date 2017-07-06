@@ -1,7 +1,6 @@
 import React from 'react'
 import { array } from 'prop-types'
 import TopicItem from 'scenes/Topic/components/Item'
-import './style.css'
 
 const ListView = ({ data }) => (
   <div className="List">
@@ -13,6 +12,10 @@ const ListView = ({ data }) => (
 
 ListView.propTypes = {
   data: array
+}
+
+ListView.defaultProps = {
+  data: []
 }
 
 export default ListView;
