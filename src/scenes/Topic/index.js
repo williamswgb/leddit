@@ -5,8 +5,10 @@ import './style.css'
 
 import Header from './components/Header'
 import Side from './components/Side'
+
 import List from './scenes/List'
 import Detail from './scenes/Detail'
+import Create from './scenes/Create'
 
 class Topic extends Component {
   renderContent() {
@@ -16,7 +18,7 @@ class Topic extends Component {
           <Switch>
             <Redirect from="/topic/hot" to="/topic" />
             <Route exact path="/topic" component={List} />
-            <Route path="/topic/create" />
+            <Route path="/topic/create" component={Create} />
             <Route path="/topic/search" />
             <Route path="/topic/:id" component={Detail} />
             <Route path="/topic/:category" component={List} />
