@@ -1,31 +1,37 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { number, func } from 'prop-types'
+import { connect } from 'react-redux'
 
+import { upvote, downvote } from 'scenes/Topic/data/topics/action'
 import VoteView from './voteView'
 
 class VoteContainer extends PureComponent {
   static propTypes = {
+    id: number,
     vote: number,
-    upVote: func,
-    downVote: func,
+    upvote: func,
+    downvote: func,
+  }
+
+  onClickVote = (isUp) => {
+    if (isUp) {
+      console.log('upvote');
+      this.props.upvote(this.props.id)
+    } else {
+      console.log('downvote')
+      this.props.downvote(this.props.id)
+    }
   }
 
   render() {
     return (
       <VoteView
-        {...this.props}
+        vote={this.props.vote}
+        onClickVote={this.onClickVote}
       />
     );
   }
 }
 
-// Will be updated
-export default VoteContainer
-// export default withRouter(connect((state) => {
-//   const { Topic } = state
-//   return {
-//     vote: Topic.data.topics.byHash,
-//   }
-// })(VoteContainer))
+export default connect(null,
+  { upvote, downvote })(VoteContainer)
