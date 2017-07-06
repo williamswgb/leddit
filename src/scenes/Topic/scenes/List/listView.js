@@ -1,14 +1,18 @@
 import React from 'react'
-
+import { array } from 'prop-types'
 import TopicItem from 'scenes/Topic/components/Item'
 import './style.css'
 
-const List = ({ data }) => (
+const ListView = ({ data }) => (
   <div className="List">
     {data.map((topic, i) => (
-      <TopicItem key={`TopicItem-${i}`} data={topic} />
+      <TopicItem key={`TopicItem-${i}`} data={topic} index={i+1} />
     ))}
   </div>
 )
 
-export default List;
+ListView.propTypes = {
+  data: array
+}
+
+export default ListView;
