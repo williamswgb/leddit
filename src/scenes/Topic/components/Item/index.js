@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { object, number } from 'prop-types'
 
-import Item from './item.js'
+import ItemView from './itemView.js'
 
 class ItemContainer extends PureComponent {
   static propTypes = {
@@ -32,7 +32,7 @@ class ItemContainer extends PureComponent {
   render() {
     const { isExpanded } = this.state;
     return (
-      <Item
+      <ItemView
         {...this.props}
         index={this.props.data.id}
         isExpanded={isExpanded}
