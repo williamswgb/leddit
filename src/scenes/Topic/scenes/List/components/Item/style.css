@@ -1,0 +1,29 @@
+.Item {
+  display: flex;
+  margin-bottom: 0.125rem;
+  min-height: 4.5rem;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+.Item:hover {
+  background-color: #F8F8F8;
+}
+
+.Item:last-of-type {
+  margin-bottom: 0rem;
+}
+
+.Item-index {
+  width: 2rem;
+  margin: 0rem 1rem;
+}
+
+.Item-vote {
+  width: 2rem;
+  margin: 0rem 1rem;
+}
+
+.Item-content {
+  flex: 1;
+}
