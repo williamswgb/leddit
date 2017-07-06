@@ -1,15 +1,29 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Switch, Redirect, Route } from 'react-router-dom'
 
 import './style.css'
 
 import Header from './components/Header'
+import Side from './components/Side'
+
+import List from './scenes/List'
 
 class Topic extends Component {
   renderContent() {
     return (
-      <div className="Topic-content"/>
+      <div className="Topic-content">
+        <div className="Topic-scene">
+          <Switch>
+            <Redirect from="/topic/hot" to="/topic" />
+            <Route exact path="/topic" component={List} />
+            <Route path="/topic/create" />
+            <Route path="/topic/search" />
+            <Route path="/topic/:category" component={List} />
+          </Switch>
+        </div>
+
+        <Side/>
+      </div>
     )
   }
 
@@ -18,15 +32,9 @@ class Topic extends Component {
       <div className="Topic">
         <Header />
         {this.renderContent()}
-        {/* {Add Route Here} */}
       </div>
     );
   }
 }
 
-export default withRouter(connect((state) => {
-  const { Topic } = state
-  return {
-    topics: Topic.data.topics.byHash,
-  }
-})(Topic))
+export default Topic

@@ -1,3 +1,11 @@
 .Topic {
   text-align: center;
 }
+
+.Topic-content {
+  display: flex;
+}
+
+.Topic-scene {
+  width: 75%;
+}
