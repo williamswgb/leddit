@@ -1,17 +1,21 @@
 import React from 'react'
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
 
+import TextLink from 'components/TextLink'
+import NavLink from './components/NavLink'
 import './style.css'
 import logo from './images/logo.png'
-import NavLink from './components/NavLink'
+
 
 const Header = () => (
   <div className="Header">
     <div className="Header-container">
       <Link to="/"><img src={logo} className="Header-logo" alt="logo" /></Link>
-      <div className="Header-title">
-        LEDDIT
-      </div>
+      <TextLink to="/topic" style={{color: '#fff'}}>
+        <div className="Header-title">
+          LEDDIT
+        </div>
+      </TextLink>
     </div>
 
     <Switch>
