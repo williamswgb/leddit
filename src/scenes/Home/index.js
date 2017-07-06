@@ -25,21 +25,19 @@ class HomeScene extends Component {
     }
 
     return (
-      <div>
-        <div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to Leddit</h2>
-          </div>
-          <p className="App-intro">
-            Press button below to get started.
-          </p>
-          <div>
-            <Button
-              onClick={this.enter}
-              text="Enter"
-            />
-          </div>
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to Leddit</h2>
+        </div>
+        <p className="App-intro">
+          Press button below to get started.
+        </p>
+        <div>
+          <Button
+            onClick={this.enter}
+            text="Enter"
+          />
         </div>
       </div>
     );
