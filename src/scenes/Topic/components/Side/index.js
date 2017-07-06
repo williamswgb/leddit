@@ -1,15 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
+import TextLink from 'components/TextLink'
 import './style.css'
 
-class SideContainer extends Component {
-  render() {
-    return (
+const Side = () => (
+  <Switch>
+    <Route exact path="/topic/create"/>
+    <Route path="/topic" render={() => (
       <div className="Side">
-        Side
+        <TextLink to='/topic/create'>
+          <div className="Side-button">Create</div>
+        </TextLink>
       </div>
-    );
-  }
-}
+    )}/>
+  </Switch>
+);
 
-export default SideContainer
+export default Side
