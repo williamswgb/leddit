@@ -1,0 +1,18 @@
+.Input {
+  width: 100%
+}
+
+.Input-name-container {
+  text-align: left;
+  margin-bottom: 0.25rem;
+}
+
+.Input-required:before {
+  content: "*";
+  color: red
+}
+
+.Input-optional {
+  color: grey;
+  margin-left: 0.25rem;
+}
