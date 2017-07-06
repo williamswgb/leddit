@@ -15,10 +15,8 @@ class VoteContainer extends PureComponent {
 
   onClickVote = (isUp) => {
     if (isUp) {
-      console.log('upvote');
       this.props.upvote(this.props.id)
     } else {
-      console.log('downvote')
       this.props.downvote(this.props.id)
     }
   }
