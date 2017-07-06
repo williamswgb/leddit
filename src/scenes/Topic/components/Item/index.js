@@ -46,7 +46,7 @@ class Item extends PureComponent {
           <Button
             className="Item-button"
             onClick={this.handleClickExpand}
-            text={this.state.isExpanded ? 'Hide' : 'Show'}
+            text={this.state.isExpanded ? 'X' : '#'}
           />
         }
       </div>
