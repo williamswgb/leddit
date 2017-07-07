@@ -9,7 +9,7 @@ export const UPDATE = 'UPDATE_TOPIC'
 export const REMOVE = 'REMOVE_TOPIC'
 export const UPVOTE = 'UPVOTE_TOPIC'
 export const DOWNVOTE = 'DOWNVOTE_TOPIC'
-
+export const ORDER = 'ORDER_TOPICS'
 
 //Action Triggers
 const topicsRequest = () => ({ type: REQUEST })
@@ -21,7 +21,8 @@ const createTopic = (payload) => ({ type: CREATE, payload })
 const updateTopic = (id, payload) => ({ type: UPDATE, id, payload })
 const removeTopic = (id) => ({ type: REMOVE, id })
 const upvoteTopic = (id) => ({ type: UPVOTE, id })
-const downvoteTopic = (id) => ({ type: DOWNVOTE, id})
+const downvoteTopic = (id) => ({ type: DOWNVOTE, id })
+const orderTopics = (order) => ({ type: ORDER, order })
 
 
 //Action List
@@ -87,6 +88,26 @@ export const upvote = (id) => (
 export const downvote = (id) => (
   (dispatch) => {
     dispatch(downvoteTopic(id))
+  }
+)
+
+export const order = (path) => (
+  (dispatch, getState) => {
+    const state = getState()
+    const topicObjs = state.Topic.data.topics.byHash
+    const topicIds = [...state.Topic.data.topics.byId]
+    switch(path) {
+      case 'hot':
+      case 'topic':
+        topicIds.sort((a,b) => topicObjs[a].vote < topicObjs[b].vote)
+        break
+      case 'new':
+        topicIds.sort((a,b) => topicObjs[a].id < topicObjs[b].id)
+        break
+      default:
+        break
+    }
+    dispatch(orderTopics(topicIds))
   }
 )
 
