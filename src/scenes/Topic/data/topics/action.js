@@ -55,7 +55,7 @@ export const create = (payload) => (
           resolve()
         } else {
           dispatch(topicsError(error))
-          reject(error)
+          reject()
         }
       }, 2000)
     })
@@ -102,9 +102,5 @@ const validatePayload = (payload) => {
     error.title = "Length of title can't exceed 255 characters"
   }
 
-  //Text
-  if (payload.text.trim().length > 255) {
-    error.text = "Length of text can't exceed 255 characters"
-  }
   return error
 }
