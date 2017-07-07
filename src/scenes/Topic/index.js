@@ -18,10 +18,9 @@ class Topic extends Component {
           <Switch>
             <Redirect from="/topic/hot" to="/topic" />
             <Route exact path="/topic" component={List} />
+            <Route path="/topic/new" component={List} />
             <Route path="/topic/create" component={Create} />
-            <Route path="/topic/search" />
             <Route path="/topic/:id" component={Detail} />
-            <Route path="/topic/:category" component={List} />
           </Switch>
         </div>
 
