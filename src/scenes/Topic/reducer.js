@@ -25,8 +25,9 @@ const error = {}
 
 const errorReducer = (state = error, action) => {
   switch (action.type) {
+    case TOPICS_REQUEST:
     case TOPICS_SUCCESS:
-      return null
+      return {}
     case TOPICS_ERROR:
       return action.error
     default:
