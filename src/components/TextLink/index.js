@@ -9,7 +9,7 @@ class TextLink extends PureComponent {
   }
 
   render() {
-    const { style, ...rest } = this.props;
+    const { style, children, ...rest } = this.props;
     return (
       <Link
         {...rest}
@@ -18,7 +18,7 @@ class TextLink extends PureComponent {
           ...style
         }}
       >
-        {this.props.children}
+        {children}
       </Link>
     );
   }
