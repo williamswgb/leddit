@@ -16,7 +16,7 @@ class CreateContainer extends Component {
   static defaultProps = {
     createTopic: null,
     loading: false,
-    error: null,
+    error: {},
   }
 
   state = {
@@ -46,11 +46,12 @@ class CreateContainer extends Component {
 
   render() {
     if (this.state.success) {
-      return <Redirect to='/topic' />
+      return <Redirect to='/topic/new' />
     }
 
     return (
       <CreateView
+        error={this.props.error}
         form={this.state.form}
         onFormChange={this.onFormChange}
         onSubmit={this.submitForm}
