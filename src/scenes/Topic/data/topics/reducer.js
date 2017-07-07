@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 import {
   CREATE,
   UPDATE,
@@ -25,6 +27,7 @@ export const reducer = (state = initialState, action) => {
             ...action.payload,
             id: state.byId.length+1,
             vote: 0,
+            updatedAt: moment().format()
           }
         }
       }
