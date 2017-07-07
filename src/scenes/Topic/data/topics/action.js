@@ -44,8 +44,21 @@ export const fetch = (id) => (
 export const create = (payload) => (
   (dispatch) => {
     dispatch(topicsRequest())
-    dispatch(createTopic(payload))
-    dispatch(topicsSuccess())
+    return new Promise((resolve, reject) => {
+      // Check error for the payload (usually from the backend)
+      // Setting timeout is for simulation of sending request to server
+      setTimeout(() => {
+        const error = validatePayload(payload)
+        if (Object.keys(error).length === 0) {
+          dispatch(createTopic(payload))
+          dispatch(topicsSuccess())
+          resolve()
+        } else {
+          dispatch(topicsError(error))
+          reject(error)
+        }
+      }, 2000)
+    })
   }
 )
 
@@ -57,7 +70,7 @@ export const update = (id, payload) => (
   }
 )
 
-export const archive = (id) => (
+export const remove = (id) => (
   (dispatch) => {
     dispatch(topicsRequest())
     dispatch(removeTopic(id))
@@ -76,3 +89,22 @@ export const downvote = (id) => (
     dispatch(downvoteTopic(id))
   }
 )
+
+// The validation of payload is usually done by the server
+// In this case, the validation will be done here
+const validatePayload = (payload) => {
+  const error = {}
+
+  //Title
+  if (!payload.title || payload.title.trim() === 0) {
+    error.title = "Title can't be blank"
+  } else if (payload.title.trim().length > 255) {
+    error.title = "Length of title can't exceed 255 characters"
+  }
+
+  //Text
+  if (payload.text.trim().length > 255) {
+    error.text = "Length of text can't exceed 255 characters"
+  }
+  return error
+}
