@@ -1,16 +1,15 @@
+import { combineReducers } from 'redux'
+
 import {
   REQUEST as TOPICS_REQUEST,
   SUCCESS as TOPICS_SUCCESS,
   ERROR as TOPICS_ERROR,
 } from './data/topics/action'
-import { reducer as dataReducer } from './data/reducer';
+import { reducer as dataReducer } from './data/reducer'
 
-const initialState = {
-  loading: false,
-  error: null,
-}
+const loading = false
 
-const loadingReducer = (state, action) => {
+const loadingReducer = (state = loading, action) => {
   switch (action.type) {
     case TOPICS_REQUEST:
       return true;
@@ -22,7 +21,9 @@ const loadingReducer = (state, action) => {
   }
 }
 
-const errorReducer = (state, action) => {
+const error = {}
+
+const errorReducer = (state = error, action) => {
   switch (action.type) {
     case TOPICS_SUCCESS:
       return null
@@ -33,15 +34,8 @@ const errorReducer = (state, action) => {
   }
 }
 
-export const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      const { loading, error, ...data } = initialState;
-      return {
-        ...state,
-        loading: loadingReducer(loading, action),
-        error: errorReducer(error, action),
-        data: dataReducer(data, action),
-      }
-  }
-}
+export const reducer = combineReducers({
+  loading: loadingReducer,
+  error: errorReducer,
+  data: dataReducer,
+})
