@@ -16,3 +16,8 @@
   color: grey;
   margin-left: 0.25rem;
 }
+
+.Input-error {
+  color: red;
+  font-size: 0.75rem;
+}

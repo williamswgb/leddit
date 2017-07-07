@@ -13,6 +13,7 @@ class InputTextBox extends PureComponent {
     isOptional: bool,
     multiLine: bool,
     maxLength: number,
+    error: string,
   }
 
   static defaultProps = {
@@ -24,6 +25,7 @@ class InputTextBox extends PureComponent {
     isOptional: false,
     multiLine: false,
     maxLength: null,
+    error: null,
   }
 
   handleChange = (e) => {
@@ -49,7 +51,7 @@ class InputTextBox extends PureComponent {
   }
 
   renderInput() {
-    const { multiLine, onChange, isRequired, isOptional, ...rest } = this.props
+    const { multiLine, onChange, isRequired, isOptional, error, ...rest } = this.props
     if (multiLine) {
       return (
         <textarea
@@ -67,11 +69,22 @@ class InputTextBox extends PureComponent {
     )
   }
 
+  renderError() {
+    if (this.props.error !== null && this.props.error.trim() !== '') {
+      return (
+        <div className="Input-error">
+          {this.props.error}
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
         {this.renderName()}
         {this.renderInput()}
+        {this.renderError()}
       </div>
     );
   }
