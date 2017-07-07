@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 //Action Types
 export const REQUEST = 'TOPICS_REQUEST'
 export const SUCCESS = 'TOPICS_SUCCESS'
@@ -102,7 +104,8 @@ export const order = (path) => (
         topicIds.sort((a,b) => topicObjs[a].vote < topicObjs[b].vote)
         break
       case 'new':
-        topicIds.sort((a,b) => topicObjs[a].id < topicObjs[b].id)
+        topicIds.sort((a,b) => moment(topicObjs[a].updatedAt)
+          .isBefore(moment(topicObjs[b].updatedAt)))
         break
       default:
         break
