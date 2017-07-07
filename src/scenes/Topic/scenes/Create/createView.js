@@ -8,23 +8,25 @@ import './style.css'
 class CreateView extends PureComponent {
   static propTypes = {
     form: object,
+    error: object,
     onFormChange: func,
     onSubmit: func,
   }
 
   static defaultProps = {
     form: {},
+    error: {},
     onFormChange: null,
     onSubmit: null,
   }
 
   renderTitleInput() {
-    const { form, onFormChange } = this.props;
+    const { form, onFormChange, error } = this.props;
     return (
       <div className="Create-input-container">
         <InputTextBox
           className="Create-input"
-          maxLength={255}
+          error={error.title}
           multiLine
           isRequired
           name="title"
@@ -36,33 +38,17 @@ class CreateView extends PureComponent {
   }
 
   renderTextInput() {
-    const { form, onFormChange } = this.props;
+    const { form, onFormChange, error } = this.props;
     return (
       <div className="Create-input-container">
         <InputTextBox
           className="Create-input Create-input-text"
+          error={error.text}
           isOptional
-          maxLength={255}
           multiLine
           name="text"
           value={form.text}
           onChange={(value) => onFormChange('text', value)}
-        />
-      </div>
-    )
-  }
-
-  renderUrlInput() {
-    const { form, onFormChange } = this.props;
-    return (
-      <div className="Create-input-container">
-        <InputTextBox
-          className="Create-input"
-          isOptional
-          multiLine
-          name="url"
-          value={form.url}
-          onChange={(value) => onFormChange('url', value)}
         />
       </div>
     )
@@ -82,7 +68,6 @@ class CreateView extends PureComponent {
       <div className="Create">
         {this.renderTitleInput()}
         {this.renderTextInput()}
-        {this.renderUrlInput()}
         {this.renderSubmitButton()}
       </div>
     )
