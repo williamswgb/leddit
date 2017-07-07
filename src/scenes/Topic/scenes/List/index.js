@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { array, object } from 'prop-types'
 
+import { order as setOrderTopics } from 'scenes/Topic/data/topics/action'
 import ListView from './listView.js'
 
 class ListContainer extends Component {
@@ -16,32 +17,31 @@ class ListContainer extends Component {
     match: {},
   }
 
-  sortData() {
-    const { data, match } = this.props
-    const route = (match.path || "").split('/')
-    switch(route[route.length - 1]) {
-      case 'hot':
-      case 'topic':
-        return data.sort((a,b) => a.vote < b.vote)
-      case 'new':
-        return data.sort((a,b) => a.id < b.id)
-      default:
-        return data
+  componentWillMount() {
+    this.sortTopics(this.props.match)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.path !== this.props.match.path) {
+      this.sortTopics(nextProps.match)
     }
   }
 
+  sortTopics(match) {
+    const route = (match.path || "").split('/')
+    this.props.setOrderTopics(route[route.length - 1])
+  }
+
   render() {
-    const data = this.props.data.length < 2 ?
-      this.props.data : this.sortData()
     return (
-      <ListView data={data} />
+      <ListView data={this.props.data} />
     )
   }
 }
 
-export default withRouter(connect((state) => {
-  const { topics } = state.Topic.data;
+export default withRouter(connect((state, props) => {
+  const { topics } = state.Topic.data
   return {
-    data: topics.byId.map((id) => topics.byHash[id]),
+    data: topics.order.map((id) => topics.byHash[id]),
   }
-})(ListContainer))
+}, { setOrderTopics })(ListContainer))
