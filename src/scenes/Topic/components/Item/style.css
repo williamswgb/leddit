@@ -35,6 +35,17 @@
   padding: 0.25rem 0.5rem;
 }
 
-.Item-button {
+.Item-button-container {
+  display: flex;
+  align-items: center;
   margin-top: 0.25rem;
+}
+
+.Item-button {
+  margin-right: 0.25rem;
+}
+
+.Item-time-submitted {
+  color: #888;
+  font-size: 0.75rem;
 }

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { object, number } from 'prop-types'
+import moment from 'moment'
 
 import TextLink from 'components/TextLink'
 import Button from 'components/Button'
@@ -39,16 +40,21 @@ class Item extends PureComponent {
     return (
       <div className="Item-main-content">
         <TextLink to={`/topic/${data.id}`}>
-          <div className="Item-title">{data.title}</div>
+          <span className="Item-title">{data.title}</span>
         </TextLink>
-        {
-          this.props.index === null ? null :
-          <Button
-            className="Item-button"
-            onClick={this.handleClickExpand}
-            text={this.state.isExpanded ? 'X' : '#'}
-          />
-        }
+        <div className="Item-button-container">
+          {
+            this.props.index === null ? null :
+            <Button
+              className="Item-button"
+              onClick={this.handleClickExpand}
+              text={this.state.isExpanded ? 'X' : '#'}
+            />
+          }
+          <div className="Item-time-submitted">
+            {`submitted ${moment(data.updatedAt).fromNow()}`}
+          </div>
+        </div>
       </div>
     )
   }
