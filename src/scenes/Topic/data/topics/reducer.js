@@ -1,14 +1,6 @@
 const initialState = {
-  // Dummy data
-  byId: ['1'],
-  byHash: {
-    '1': {
-      id: 1,
-      vote: 12,
-      title: 'Title',
-      description: 'Description',
-    }
-  },
+  byId: [],
+  byHash: {},
 };
 
 export const reducer = (state = initialState, action) => {
@@ -21,6 +13,7 @@ export const reducer = (state = initialState, action) => {
           ...state.byHash,
           [state.byId.length+1]: {
             ...action.payload,
+            id: state.byId.length+1,
             vote: 0,
           }
         }
