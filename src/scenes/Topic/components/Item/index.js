@@ -29,7 +29,7 @@ class Item extends PureComponent {
     const { data } = this.props
     return (
       <div className="Item-sub-content">
-        <div>{data.description}</div>
+        <div>{data.text}</div>
       </div>
     )
   }
