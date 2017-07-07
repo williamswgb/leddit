@@ -1,11 +1,21 @@
+import {
+  CREATE,
+  UPDATE,
+  REMOVE,
+  UPVOTE,
+  DOWNVOTE,
+  ORDER,
+} from './action'
+
 const initialState = {
+  order: [],
   byId: [],
   byHash: {},
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CREATE_TOPIC':
+    case CREATE:
       return {
         ...state,
         byId: [ ...state.byId, state.byId.length+1],
@@ -18,7 +28,7 @@ export const reducer = (state = initialState, action) => {
           }
         }
       }
-    case 'UPDATE_TOPIC':
+    case UPDATE:
       return {
         ...state,
         byHash: {
@@ -29,7 +39,7 @@ export const reducer = (state = initialState, action) => {
           }
         }
       }
-    case 'REMOVE_TOPIC':
+    case REMOVE:
       const prunedId = state.byId.filter(id => id !== action.id);
       const { [action.id]: omit, ...prunedHash } = state.byHash;
       return {
@@ -37,7 +47,7 @@ export const reducer = (state = initialState, action) => {
         byId: prunedId,
         byHash: prunedHash,
       }
-    case 'UPVOTE_TOPIC':
+    case UPVOTE:
       return {
         ...state,
         byHash: {
@@ -48,7 +58,7 @@ export const reducer = (state = initialState, action) => {
           }
         }
       }
-    case 'DOWNVOTE_TOPIC':
+    case DOWNVOTE:
       return {
         ...state,
         byHash: {
@@ -58,6 +68,11 @@ export const reducer = (state = initialState, action) => {
             vote: Math.max(state.byHash[action.id].vote-1, 0),
           }
         }
+      }
+    case ORDER:
+      return {
+        ...state,
+        order: action.order,
       }
     default:
       return state
