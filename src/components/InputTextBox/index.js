@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import { func, string, bool, number } from 'prop-types'
 
+import Helper from 'services/helper'
+
 import './style.css'
 
 class InputTextBox extends PureComponent {
@@ -70,7 +72,7 @@ class InputTextBox extends PureComponent {
   }
 
   renderError() {
-    if (this.props.error !== null && this.props.error.trim() !== '') {
+    if (Helper.isNonEmptyString(this.props.error)) {
       return (
         <div className="Input-error">
           {this.props.error}
