@@ -3,11 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { node, object } from 'prop-types'
 
 class TextLink extends PureComponent {
-  static propTypes = {
-    children: node,
-    style: object,
-  }
-
   render() {
     const { style, children, ...rest } = this.props;
     return (
@@ -22,6 +17,18 @@ class TextLink extends PureComponent {
       </NavLink>
     );
   }
+}
+
+TextLink.displayName = 'Text Link'
+
+TextLink.propTypes = {
+  children: node,
+  style: object,
+}
+
+TextLink.defaultProps = {
+  children: null,
+  style: {}
 }
 
 export default TextLink;

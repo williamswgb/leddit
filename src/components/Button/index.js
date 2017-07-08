@@ -2,18 +2,6 @@ import React, { PureComponent } from 'react'
 import { func, string } from 'prop-types'
 
 class Button extends PureComponent {
-  static propTypes = {
-    className: string,
-    onClick: func,
-    text: string,
-  }
-
-  static defaultProps = {
-    className: null,
-    onClick: null,
-    text: '',
-  }
-
   handleClick = (e) => {
     e.preventDefault()
     if (this.props.onClick) {
@@ -32,6 +20,20 @@ class Button extends PureComponent {
       </button>
     );
   }
+}
+
+Button.displayName = 'Button'
+
+Button.propTypes = {
+  className: string,
+  onClick: func,
+  text: string,
+}
+
+Button.defaultProps = {
+  className: null,
+  onClick: null,
+  text: '',
 }
 
 export default Button;

@@ -7,28 +7,6 @@ import Helper from 'services/helper'
 import './style.css'
 
 class InputTextBox extends PureComponent {
-  static propTypes = {
-    className: string,
-    onClick: func,
-    name: string,
-    value: string,
-    isRequired: bool,
-    isOptional: bool,
-    multiLine: bool,
-    error: string,
-  }
-
-  static defaultProps = {
-    className: null,
-    onChange: null,
-    name: null,
-    value: '',
-    isRequired: false,
-    isOptional: false,
-    multiLine: false,
-    error: null,
-  }
-
   handleChange = (e) => {
     if (this.props.onChange) {
       this.props.onChange(e.target.value)
@@ -91,6 +69,30 @@ class InputTextBox extends PureComponent {
       </div>
     );
   }
+}
+
+InputTextBox.displayName = 'Input Text Box'
+
+InputTextBox.propTypes = {
+  className: string,
+  onClick: func,
+  name: string,
+  value: string,
+  isRequired: bool,
+  isOptional: bool,
+  multiLine: bool,
+  error: string,
+}
+
+InputTextBox.defaultProps = {
+  className: null,
+  onChange: null,
+  name: null,
+  value: '',
+  isRequired: false,
+  isOptional: false,
+  multiLine: false,
+  error: null,
 }
 
 export default InputTextBox;
