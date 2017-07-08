@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { node, object } from 'prop-types'
 
 class TextLink extends PureComponent {
@@ -11,7 +11,7 @@ class TextLink extends PureComponent {
   render() {
     const { style, children, ...rest } = this.props;
     return (
-      <Link
+      <NavLink
         {...rest}
         style={{
           textDecoration: 'none',
@@ -19,7 +19,7 @@ class TextLink extends PureComponent {
         }}
       >
         {children}
-      </Link>
+      </NavLink>
     );
   }
 }
