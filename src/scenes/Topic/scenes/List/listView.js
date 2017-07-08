@@ -5,7 +5,7 @@ import TopicItem from 'scenes/Topic/components/Item'
 const ListView = ({ data }) => (
   <div className="List">
     {data.map((topic, i) => (
-      <TopicItem key={`TopicItem-${i}`} data={topic} index={i+1} />
+      <TopicItem key={`TopicItem-${i}`} data={topic} index={i+1} basePath="/topic" />
     ))}
   </div>
 )

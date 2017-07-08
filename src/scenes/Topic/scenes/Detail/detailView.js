@@ -4,7 +4,7 @@ import TopicItem from 'scenes/Topic/components/Item'
 
 const DetailView = ({ data }) => (
   <div className="Detail">
-    <TopicItem data={data} />
+    <TopicItem data={data} basePath="/topic" />
   </div>
 )
 
