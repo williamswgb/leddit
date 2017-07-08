@@ -44,11 +44,12 @@ export const reducer = (state = initialState, action) => {
         }
       }
     case REMOVE:
-      const prunedId = state.byId.filter(id => id !== action.id);
-      const { [action.id]: omit, ...prunedHash } = state.byHash;
+      const prunedHash = Object.assign({}, state.byHash)
+      delete prunedHash[action.id]
       return {
         ...state,
-        byId: prunedId,
+        order: state.byId.filter(id => id !== action.id),
+        byId: state.byId.filter(id => id !== action.id),
         byHash: prunedHash,
       }
     case UPVOTE:
