@@ -5,8 +5,6 @@ import Helper from 'services/helper'
 export const REQUEST = 'TOPICS_REQUEST'
 export const SUCCESS = 'TOPICS_SUCCESS'
 export const ERROR = 'TOPICS_ERROR'
-export const SHOW_LIST = 'SHOW_TOPIC_LIST'
-export const SHOW = 'SHOW_TOPIC'
 export const CREATE = 'CREATE_TOPIC'
 export const UPDATE = 'UPDATE_TOPIC'
 export const REMOVE = 'REMOVE_TOPIC'
@@ -18,8 +16,6 @@ export const ORDER = 'ORDER_TOPICS'
 const topicsRequest = () => ({ type: REQUEST })
 const topicsSuccess = () => ({ type: SUCCESS })
 const topicsError = (error) => ({ type: ERROR, error })
-const showTopicList = () => ({ type: SHOW_LIST })
-const showTopic = (id) => ({ type: SHOW, id })
 const createTopic = (payload) => ({ type: CREATE, payload })
 const updateTopic = (id, payload) => ({ type: UPDATE, id, payload })
 const removeTopic = (id) => ({ type: REMOVE, id })
@@ -29,22 +25,6 @@ const orderTopics = (order) => ({ type: ORDER, order })
 
 
 //Action List
-export const fetchList = () => (
-  (dispatch) => {
-    dispatch(topicsRequest())
-    dispatch(showTopicList())
-    dispatch(topicsSuccess())
-  }
-)
-
-export const fetch = (id) => (
-  (dispatch) => {
-    dispatch(topicsRequest())
-    dispatch(showTopic(id))
-    dispatch(topicsError('error'))
-  }
-)
-
 export const create = (payload) => (
   (dispatch) => {
     dispatch(topicsRequest())
