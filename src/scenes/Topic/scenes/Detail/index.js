@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { object } from 'prop-types'
 
 import DetailView from './detailView.js'
@@ -11,10 +11,13 @@ class DetailContainer extends Component {
   }
 
   static defaultProps = {
-    data: {}
+    data: null,
   }
 
   render() {
+    if (this.props.data === null) {
+      return <Redirect to='/topic' />
+    }
     return (
       <DetailView data={this.props.data} />
     )
