@@ -32,7 +32,7 @@ class Item extends PureComponent {
     return (
       <div className="Item-button-container">
         {
-          this.props.index === null || data.text === undefined || data.text.trim() !== ''
+          this.props.index === null || data.text === undefined || data.text.trim() === ''
           ? null :
           <Button
             className="Item-button"
