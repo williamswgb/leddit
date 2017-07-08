@@ -20,7 +20,8 @@ class Topic extends Component {
             <Route exact path="/topic" component={List} />
             <Route path="/topic/new" component={List} />
             <Route path="/topic/create" component={Create} />
-            <Route path="/topic/:id" component={Detail} />
+            <Route exact path="/topic/:id" component={Detail} />
+            <Route path="/topic/:id/update" component={Create} />
           </Switch>
         </div>
 

@@ -23,6 +23,7 @@ const Header = () => (
       <Route exact path="/topic" component={NavLink}/>
       <Route path="/topic/create" />
       <Route path="/topic/search" />
+      <Route path="/topic/:id/update" />
       <Route path="/topic/:category" component={NavLink}/>
     </Switch>
   </div>

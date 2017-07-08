@@ -7,6 +7,7 @@ import './style.css'
 const Side = () => (
   <Switch>
     <Route exact path="/topic/create"/>
+    <Route exact path="/topic/:id/update"/>
     <Route path="/topic" render={() => (
       <div className="Side">
         <TextLink to='/topic/create'>
