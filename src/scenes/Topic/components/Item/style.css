@@ -16,6 +16,8 @@
 .Item-index {
   width: 2rem;
   margin: 0rem 1rem;
+  color: #c6c6c6;
+  line-height: 3rem;
 }
 
 .Item-content {
