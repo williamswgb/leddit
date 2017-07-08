@@ -1,7 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import TextLink from 'components/TextLink'
+import Component from 'components'
+
 import './style.css'
 
 const Side = () => (
@@ -10,9 +11,9 @@ const Side = () => (
     <Route exact path="/topic/:id/update"/>
     <Route path="/topic" render={() => (
       <div className="Side">
-        <TextLink to='/topic/create'>
+        <Component.TextLink to='/topic/create'>
           <div className="Side-button">Create</div>
-        </TextLink>
+        </Component.TextLink>
       </div>
     )}/>
   </Switch>

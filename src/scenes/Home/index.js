@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import Button from 'components/Button'
+import Component from 'components'
 
 import logo from './images/Kappa.gif'
 import './style.css'
 
-class HomeScene extends PureComponent {
+class Home extends PureComponent {
   state = { redirect: false }
 
   enter = () => {
@@ -33,7 +33,7 @@ class HomeScene extends PureComponent {
           Press button below to get started.
         </p>
 
-        <Button
+        <Component.Button
           onClick={this.enter}
           text="Enter"
         />
@@ -42,4 +42,4 @@ class HomeScene extends PureComponent {
   }
 }
 
-export default HomeScene
+export default Home

@@ -5,10 +5,9 @@ import classNames from 'classnames'
 import moment from 'moment'
 
 import Helper from 'services/helper'
-import TextLink from 'components/TextLink'
-import Button from 'components/Button'
+import Component from 'components'
 
-import Vote from './components/Vote'
+import ItemComponent from './components'
 import './style.css'
 
 class Item extends PureComponent {
@@ -39,9 +38,9 @@ class Item extends PureComponent {
   renderTitle() {
     const { data, basePath } = this.props
     return (
-      <TextLink to={`${basePath}/${data.id}`}>
+      <Component.TextLink to={`${basePath}/${data.id}`}>
         <span className="Item-title">{data.title}</span>
-      </TextLink>
+      </Component.TextLink>
     )
   }
 
@@ -53,7 +52,7 @@ class Item extends PureComponent {
         {
           Helper.isNullOrUndefined(index) || !Helper.isNonEmptyString(data.text)
           ? null :
-          <Button
+          <Component.Button
             className="Item-button"
             onClick={this.handleClickExpand}
             text={this.state.isExpanded ? 'X' : '#'}
@@ -73,9 +72,9 @@ class Item extends PureComponent {
     })
     return (
       <div className={footerClassName}>
-        <TextLink to={`${basePath}/${data.id}/update`}>
+        <Component.TextLink to={`${basePath}/${data.id}/update`}>
           <span className="Item-footer-link">update</span>
-        </TextLink>
+        </Component.TextLink>
 
         <span onClick={this.handleClickRemove} className="Item-footer-link">
           remove
@@ -123,7 +122,7 @@ class Item extends PureComponent {
     return (
       <div className="Item">
         {this.renderIndex()}
-        <Vote vote={data.vote} id={data.id} />
+        <ItemComponent.Vote vote={data.vote} id={data.id} />
         {this.renderContent()}
       </div>
     );

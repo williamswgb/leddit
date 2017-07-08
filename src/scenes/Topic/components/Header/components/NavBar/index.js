@@ -1,17 +1,17 @@
 import React from 'react'
 
-import TextLink from 'components/TextLink'
+import Component from 'components'
 
 import './style.css'
 
 const NavBar = ({ match, links }) => (
   <div className="NavBar">
     {links.map((link, i) =>
-      <TextLink
+      <Component.TextLink
         key={`NavBarLink-${i}`}
         className="NavBar-category"
         to={link.to}>{link.text}
-      </TextLink>)}
+      </Component.TextLink>)}
   </div>
 )
 

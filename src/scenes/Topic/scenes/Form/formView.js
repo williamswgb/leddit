@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 import { object, func, bool } from 'prop-types'
 
-import InputTextBox from 'components/InputTextBox'
-import Button from 'components/Button'
+import Component from 'components'
 import './style.css'
 
 class FormView extends PureComponent {
@@ -26,7 +25,7 @@ class FormView extends PureComponent {
     const { form, onFormChange, error, loading } = this.props;
     return (
       <div className="Form-input-container">
-        <InputTextBox
+        <Component.InputTextBox
           className="Form-input"
           disabled={loading}
           error={error.title}
@@ -44,7 +43,7 @@ class FormView extends PureComponent {
     const { form, onFormChange, error, loading } = this.props;
     return (
       <div className="Form-input-container">
-        <InputTextBox
+        <Component.InputTextBox
           className="Form-input Form-input-text"
           disabled={loading}
           error={error.text}
@@ -60,7 +59,7 @@ class FormView extends PureComponent {
 
   renderSubmitButton() {
     return (
-      <Button
+      <Component.Button
         disabled={this.props.loading}
         text="Submit"
         onClick={this.props.onSubmit}

@@ -1,10 +1,11 @@
 import React from 'react'
 import { object, func, string } from 'prop-types'
-import TopicItem from 'scenes/Topic/components/Item'
+
+import TopicComponent from 'scenes/Topic/components'
 
 const DetailView = ({ data, basePath, onClickRemove }) => (
   <div className="Detail">
-    <TopicItem
+    <TopicComponent.Item
       data={data}
       basePath={basePath}
       onClickRemove={onClickRemove}

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { number, array, func } from 'prop-types'
 
-import Button from 'components/Button'
-import TopicItem from 'scenes/Topic/components/Item'
+import Component from 'components'
+import TopicComponent from 'scenes/Topic/components'
 
 import './style.css'
 
@@ -29,7 +29,7 @@ class ListView extends PureComponent {
     const { data, removeTopic, page, maxItems } = this.props
 
     return data.map((topic, i) => (
-      <TopicItem
+      <TopicComponent.Item
         key={`TopicItem-${i}`}
         data={topic}
         index={((page - 1) * (maxItems || data.length))+i+1}
@@ -46,9 +46,9 @@ class ListView extends PureComponent {
       return (
         <div className="List-navigation">
           <span className="List-navigation-text">view more:</span>
-          {onClickPrev ? <Button text="< prev" onClick={onClickPrev} /> : null}
+          {onClickPrev ? <Component.Button text="< prev" onClick={onClickPrev} /> : null}
           {onClickPrev && onClickNext ? <div className="List-separator" /> : null}
-          {onClickNext ? <Button text="next >" onClick={onClickNext} /> : null}
+          {onClickNext ? <Component.Button text="next >" onClick={onClickNext} /> : null}
         </div>
       )
     }

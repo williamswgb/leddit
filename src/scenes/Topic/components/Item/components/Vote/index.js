@@ -3,6 +3,7 @@ import { number, func } from 'prop-types'
 import { connect } from 'react-redux'
 
 import { upvote, downvote } from 'scenes/Topic/data/topics/action'
+
 import VoteView from './voteView'
 
 class VoteContainer extends PureComponent {
