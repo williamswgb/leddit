@@ -68,8 +68,21 @@ export const create = (payload) => (
 export const update = (id, payload) => (
   (dispatch) => {
     dispatch(topicsRequest())
-    dispatch(updateTopic(id, payload))
-    dispatch(topicsSuccess())
+    return new Promise((resolve, reject) => {
+      // Check error for the payload (usually from the backend)
+      // Setting timeout is for simulation of sending request to server
+      setTimeout(() => {
+        const error = validatePayload(payload)
+        if (Object.keys(error).length === 0) {
+          dispatch(updateTopic(id, payload))
+          dispatch(topicsSuccess())
+          resolve()
+        } else {
+          dispatch(topicsError(error))
+          reject()
+        }
+      }, 2000)
+    })
   }
 )
 
