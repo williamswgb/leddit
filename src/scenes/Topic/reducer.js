@@ -5,6 +5,7 @@ import {
   SUCCESS as TOPICS_SUCCESS,
   ERROR as TOPICS_ERROR,
 } from './data/topics/action'
+import { RESET_ERROR } from './action'
 import { reducer as dataReducer } from './data/reducer'
 
 const loading = false
@@ -25,6 +26,7 @@ const error = {}
 
 const errorReducer = (state = error, action) => {
   switch (action.type) {
+    case RESET_ERROR:
     case TOPICS_REQUEST:
     case TOPICS_SUCCESS:
       return {}
