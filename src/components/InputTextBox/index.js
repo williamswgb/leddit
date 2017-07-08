@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { func, string, bool, number } from 'prop-types'
+import { func, string, bool } from 'prop-types'
 
 import Helper from 'services/helper'
 
@@ -14,7 +14,6 @@ class InputTextBox extends PureComponent {
     isRequired: bool,
     isOptional: bool,
     multiLine: bool,
-    maxLength: number,
     error: string,
   }
 
@@ -26,7 +25,6 @@ class InputTextBox extends PureComponent {
     isRequired: false,
     isOptional: false,
     multiLine: false,
-    maxLength: null,
     error: null,
   }
 
