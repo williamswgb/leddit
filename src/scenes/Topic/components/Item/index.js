@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
-import { object, number } from 'prop-types'
+import { withRouter } from 'react-router-dom'
+import { object, number, func } from 'prop-types'
 import moment from 'moment'
 
 import TextLink from 'components/TextLink'
 import Button from 'components/Button'
+
 import Vote from './components/Vote'
 import './style.css'
 
@@ -11,11 +13,13 @@ class Item extends PureComponent {
   static propTypes = {
     data: object,
     index: number,
+    onClickRemove: func,
   }
 
   static defaultProps = {
     data: {},
     index: null,
+    onClickRemove: null,
   }
 
   state = {
@@ -24,6 +28,10 @@ class Item extends PureComponent {
 
   handleClickExpand = this.props.index === null ? null : () => {
     this.setState({ isExpanded: !this.state.isExpanded })
+  }
+
+  handleClickRemove = this.props.onClickRemove === null ? null : () => {
+    this.props.onClickRemove(this.props.data.id)
   }
 
   renderTitle() {
@@ -66,9 +74,9 @@ class Item extends PureComponent {
           <span className="Item-footer-link">update</span>
         </TextLink>
 
-        <TextLink to={`/topic/${data.id}/remove`}>
-          <span className="Item-footer-link">remove</span>
-        </TextLink>
+        <span onClick={this.handleClickRemove} className="Item-footer-link">
+          remove
+        </span>
       </div>
     )
   }
@@ -117,4 +125,4 @@ class Item extends PureComponent {
   }
 }
 
-export default Item
+export default withRouter(Item)

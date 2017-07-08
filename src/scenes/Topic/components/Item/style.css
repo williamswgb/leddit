@@ -70,5 +70,6 @@
 
 .Item-footer-link {
   color: #888;
-  margin-right: 0.5rem
+  margin-right: 0.5rem;
+  cursor: pointer;
 }
