@@ -5,7 +5,7 @@ import InputTextBox from 'components/InputTextBox'
 import Button from 'components/Button'
 import './style.css'
 
-class CreateView extends PureComponent {
+class FormView extends PureComponent {
   static propTypes = {
     loading: bool,
     form: object,
@@ -25,9 +25,9 @@ class CreateView extends PureComponent {
   renderTitleInput() {
     const { form, onFormChange, error, loading } = this.props;
     return (
-      <div className="Create-input-container">
+      <div className="Form-input-container">
         <InputTextBox
-          className="Create-input"
+          className="Form-input"
           disabled={loading}
           error={error.title}
           multiLine
@@ -43,9 +43,9 @@ class CreateView extends PureComponent {
   renderTextInput() {
     const { form, onFormChange, error, loading } = this.props;
     return (
-      <div className="Create-input-container">
+      <div className="Form-input-container">
         <InputTextBox
-          className="Create-input Create-input-text"
+          className="Form-input Form-input-text"
           disabled={loading}
           error={error.text}
           isOptional
@@ -70,7 +70,7 @@ class CreateView extends PureComponent {
 
   render() {
     return (
-      <div className="Create">
+      <div className="Form">
         {this.renderTitleInput()}
         {this.renderTextInput()}
         {this.renderSubmitButton()}
@@ -79,4 +79,4 @@ class CreateView extends PureComponent {
   }
 }
 
-export default CreateView
+export default FormView

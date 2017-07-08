@@ -5,7 +5,7 @@ import Header from './components/Header'
 import Side from './components/Side'
 import List from './scenes/List'
 import Detail from './scenes/Detail'
-import Create from './scenes/Create'
+import Form from './scenes/Form'
 import './style.css'
 
 class TopicScene extends PureComponent {
@@ -17,9 +17,9 @@ class TopicScene extends PureComponent {
             <Redirect from="/topic/hot" to="/topic" />
             <Route exact path="/topic" component={List} />
             <Route path="/topic/new" component={List} />
-            <Route path="/topic/create" component={Create} />
+            <Route path="/topic/create" component={Form} />
             <Route exact path="/topic/:id" component={Detail} />
-            <Route path="/topic/:id/update" component={Create} />
+            <Route path="/topic/:id/update" component={Form} />
           </Switch>
         </div>
 

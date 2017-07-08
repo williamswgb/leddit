@@ -10,9 +10,9 @@ import {
  } from 'scenes/Topic/data/topics/action'
  import { reset as resetError } from 'scenes/Topic/action'
 
-import CreateView from './createView.js'
+import FormView from './formView.js'
 
-class CreateContainer extends Component {
+class FormContainer extends Component {
   static propTypes = {
     loading: bool,
     data: object,
@@ -91,7 +91,7 @@ class CreateContainer extends Component {
     }
 
     return (
-      <CreateView
+      <FormView
         loading={this.props.loading}
         error={this.props.error}
         form={this.state.form}
@@ -110,4 +110,4 @@ export default withRouter(connect((state, props) => {
     error,
     data: data.topics.byHash[id],
   }
-}, { createTopic, updateTopic, resetError })(CreateContainer))
+}, { createTopic, updateTopic, resetError })(FormContainer))
