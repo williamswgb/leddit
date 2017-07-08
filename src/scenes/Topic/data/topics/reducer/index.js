@@ -7,7 +7,7 @@ import {
   UPVOTE,
   DOWNVOTE,
   ORDER,
-} from './action'
+} from '../action'
 
 const initialState = {
   order: [],
