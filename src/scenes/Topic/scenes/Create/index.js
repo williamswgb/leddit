@@ -92,6 +92,7 @@ class CreateContainer extends Component {
 
     return (
       <CreateView
+        loading={this.props.loading}
         error={this.props.error}
         form={this.state.form}
         onFormChange={this.onFormChange}
