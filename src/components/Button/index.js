@@ -22,11 +22,13 @@ class Button extends PureComponent {
   }
 
   render() {
+    const { text, onClick, ...rest} = this.props
+
     return (
       <button
-        className={this.props.className}
+        {...rest}
         onClick={this.handleClick}>
-        {this.props.text}
+        {text}
       </button>
     );
   }
