@@ -23,7 +23,6 @@ const upvoteTopic = (id) => ({ type: UPVOTE, id })
 const downvoteTopic = (id) => ({ type: DOWNVOTE, id })
 const orderTopics = (order) => ({ type: ORDER, order })
 
-
 //Action List
 export const create = (payload) => (
   (dispatch) => {
