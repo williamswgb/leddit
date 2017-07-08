@@ -35,6 +35,10 @@
   order: 2;
 }
 
+.Item-sub-content--no-index {
+  order: 1;
+}
+
 .Item-button-container {
   display: flex;
   align-items: center;
@@ -58,6 +62,10 @@
   font-weight: bold;
   margin-top: 0.5rem;
   order: 1;
+}
+
+.Item-footer--no-index {
+  order: 2;
 }
 
 .Item-footer-link {

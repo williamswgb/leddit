@@ -58,9 +58,10 @@ class Item extends PureComponent {
   }
 
   renderFooter() {
-    const { data } = this.props
+    const { data, index } = this.props
+    const className = `Item-footer${index === null ? ' Item-footer--no-index' : ''}`
     return (
-      <div className="Item-footer">
+      <div className={className}>
         <TextLink to={`/topic/${data.id}/update`}>
           <span className="Item-footer-link">update</span>
         </TextLink>
@@ -73,11 +74,12 @@ class Item extends PureComponent {
   }
 
   renderSubContent() {
-    const { data } = this.props
+    const { data, index } = this.props
 
     if (this.state.isExpanded && (data.text !== undefined && data.text.trim() !== '')) {
+      const className = `Item-sub-content ${index === null ? ' Item-sub-content--no-index' : ''}`
       return (
-        <div className="Item-sub-content">
+        <div className={className}>
           <div>{data.text}</div>
         </div>
       )
