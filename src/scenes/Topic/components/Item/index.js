@@ -26,6 +26,16 @@ class Item extends PureComponent {
     this.setState({ isExpanded: !this.state.isExpanded })
   }
 
+  renderTitle() {
+    const { data } = this.props
+
+    return (
+      <TextLink to={`/topic/${data.id}`}>
+        <span className="Item-title">{data.title}</span>
+      </TextLink>
+    )
+  }
+
   renderButtonContainer() {
     const { data } = this.props
 
@@ -62,31 +72,26 @@ class Item extends PureComponent {
     )
   }
 
-  renderTitle() {
+  renderSubContent() {
     const { data } = this.props
 
-    return (
-      <TextLink to={`/topic/${data.id}`}>
-        <span className="Item-title">{data.title}</span>
-      </TextLink>
-    )
+    if (this.state.isExpanded && (data.text !== undefined && data.text.trim() !== '')) {
+      return (
+        <div className="Item-sub-content">
+          <div>{data.text}</div>
+        </div>
+      )
+    }
+    return null
   }
 
-  renderMainContent() {
+  renderContent() {
     return (
-      <div>
+      <div className="Item-content">
         {this.renderTitle()}
         {this.renderButtonContainer()}
         {this.renderFooter()}
-      </div>
-    )
-  }
-
-  renderSubContent() {
-    const { data } = this.props
-    return (
-      <div className="Item-sub-content">
-        <div>{data.text}</div>
+        {this.renderSubContent()}
       </div>
     )
   }
@@ -96,17 +101,6 @@ class Item extends PureComponent {
 
     return index === null ? null :
       <div className="Item-index">{index}</div>
-  }
-
-  renderContent() {
-    const { data } = this.props
-    return (
-      <div className="Item-content-container">
-        {this.renderMainContent()}
-        {this.state.isExpanded && (data.text !== undefined && data.text.trim() !== '') ?
-          this.renderSubContent() : false}
-      </div>
-    )
   }
 
   render() {
