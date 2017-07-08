@@ -41,5 +41,4 @@ VoteContainer.defaultProps = {
   downvote: null,
 }
 
-export default connect(null,
-  { upvote, downvote })(VoteContainer)
+export default connect(null, { upvote, downvote })(VoteContainer)

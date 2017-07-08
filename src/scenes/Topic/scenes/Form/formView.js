@@ -87,5 +87,4 @@ FormView.defaultProps = {
   onSubmit: null,
 }
 
-
 export default FormView
