@@ -11,7 +11,7 @@ const VoteView = ({ vote, onClickVote }) => (
       onClick={() => onClickVote(true)}
       text="^"
     />
-    <div>{vote}</div>
+    <div className="Vote-number">{vote === 0 ? '•' : vote}</div>
     <Button
       className="Vote-button"
       onClick={() => onClickVote(false)}
