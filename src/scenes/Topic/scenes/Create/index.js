@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
 import { func, bool, object } from 'prop-types'
 
+import Helper from 'services/helper'
 import {
   create as createTopic,
   update as updateTopic,
  } from 'scenes/Topic/data/topics/action'
+
 import CreateView from './createView.js'
 
 class CreateContainer extends Component {
@@ -53,9 +55,8 @@ class CreateContainer extends Component {
 
   submitForm = () => {
     const { updateTopic, createTopic, match } = this.props
-    const action = match.params.id !== undefined ?
-      updateTopic(match.params.id, this.state.form)
-      : createTopic(this.state.form)
+    const action = Helper.isNullOrUndefined(match.params.id) ? createTopic(this.state.form)
+      : updateTopic(match.params.id, this.state.form)
 
     action.then(() => {
       this.setState({ success: true })
@@ -66,7 +67,8 @@ class CreateContainer extends Component {
     let to = null
     if (this.state.success) {
       to = '/topic/new'
-    } else if (this.props.match.params.id !== undefined && this.props.data === null) {
+    } else if (!Helper.isNullOrUndefined(this.props.match.params.id) &&
+      Helper.isNullOrUndefined(this.props.data)) {
       to = '/topic'
     }
     return to
@@ -75,7 +77,7 @@ class CreateContainer extends Component {
   render() {
     const url = this.getRedirectUrl()
 
-    if (url !== null) {
+    if (!Helper.isNullOrUndefined(url)) {
       return <Redirect to={url} />
     }
 
