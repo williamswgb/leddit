@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
-import { object } from 'prop-types'
+import { object, func } from 'prop-types'
 
+import { remove as removeTopic } from 'scenes/Topic/data/topics/action'
 import DetailView from './detailView.js'
 
 class DetailContainer extends Component {
   static propTypes = {
     data: object,
+    removeTopic: func,
   }
 
   static defaultProps = {
     data: null,
+    removeTopic: null,
+  }
+
+  removeTopic = (id) => {
+    if (this.props.removeTopic !== null) {
+      this.props.removeTopic(id)
+    }
   }
 
   render() {
@@ -19,7 +28,11 @@ class DetailContainer extends Component {
       return <Redirect to='/topic' />
     }
     return (
-      <DetailView data={this.props.data} />
+      <DetailView
+        basePath="/topic"
+        data={this.props.data}
+        onClickRemove={this.removeTopic}
+      />
     )
   }
 }
@@ -30,4 +43,4 @@ export default withRouter(connect((state, props) => {
   return {
     data: topics.byHash[id],
   }
-})(DetailContainer))
+}, { removeTopic })(DetailContainer))
