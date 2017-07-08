@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import logo from './Kappa.gif'
-import './style.css'
-
 import Button from 'components/Button'
+
+import logo from './images/Kappa.gif'
+import './style.css'
 
 class HomeScene extends Component {
   state = { redirect: false }
@@ -23,20 +23,20 @@ class HomeScene extends Component {
     }
 
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className="Home">
+        <div className="Home-header">
+          <img src={logo} className="Home-logo" alt="logo" />
           <h2>Welcome to Leddit</h2>
         </div>
-        <p className="App-intro">
+
+        <p className="Home-intro">
           Press button below to get started.
         </p>
-        <div>
-          <Button
-            onClick={this.enter}
-            text="Enter"
-          />
-        </div>
+
+        <Button
+          onClick={this.enter}
+          text="Enter"
+        />
       </div>
     );
   }
