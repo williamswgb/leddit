@@ -87,10 +87,24 @@ export const update = (id, payload) => (
 )
 
 export const remove = (id) => (
-  (dispatch) => {
+  (dispatch, getState) => {
+    const state = getState()
     dispatch(topicsRequest())
-    dispatch(removeTopic(id))
-    dispatch(topicsError('error'))
+    return new Promise((resolve, reject) => {
+      // Check error for the payload (usually from the backend)
+      // Setting timeout is for simulation of sending request to server
+      setTimeout(() => {
+        const error = validateId(id, state)
+        if (Object.keys(error).length === 0) {
+          dispatch(removeTopic(id))
+          dispatch(topicsSuccess())
+          resolve()
+        } else {
+          dispatch(topicsError(error))
+          reject()
+        }
+      }, 2000)
+    })
   }
 )
 
@@ -137,6 +151,17 @@ const validatePayload = (payload) => {
     error.title = "Title can't be blank"
   } else if (payload.title.trim().length > 255) {
     error.title = "Length of title can't exceed 255 characters"
+  }
+
+  return error
+}
+
+const validateId = (id, state) => {
+  const error = {}
+  const { topics } = state.Topic.data;
+
+  if (topics.byId.indexOf(id) === -1 || topics.byHash[id] === undefined) {
+    error.id = "Topic not exist"
   }
 
   return error
