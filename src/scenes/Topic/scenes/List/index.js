@@ -10,6 +10,8 @@ import {
 
 import ListView from './listView.js'
 
+const MAX_ITEMS_PER_PAGE = 20;
+
 class ListContainer extends Component {
   static propTypes = {
     data: array,
@@ -56,6 +58,6 @@ class ListContainer extends Component {
 export default withRouter(connect((state, props) => {
   const { topics } = state.Topic.data
   return {
-    data: topics.order.map((id) => topics.byHash[id]),
+    data: topics.order.slice(0, MAX_ITEMS_PER_PAGE).map((id) => topics.byHash[id]),
   }
 }, { orderTopics, removeTopic })(ListContainer))
