@@ -12,8 +12,7 @@ const appReducer = combineReducers({
 
 export default createStore(
 	appReducer,
-  applyMiddleware(thunk),
-	applyMiddleware(logger),
+  applyMiddleware(thunk, logger),
 	compose(
 		window.devToolsExtension ? window.devToolsExtension() : f => f
 	),
