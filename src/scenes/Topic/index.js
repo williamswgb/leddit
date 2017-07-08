@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Switch, Redirect, Route } from 'react-router-dom'
-
-import './style.css'
 
 import Header from './components/Header'
 import Side from './components/Side'
-
 import List from './scenes/List'
 import Detail from './scenes/Detail'
 import Create from './scenes/Create'
+import './style.css'
 
-class Topic extends Component {
+class TopicScene extends PureComponent {
   renderContent() {
     return (
       <div className="Topic-content">
@@ -40,4 +38,4 @@ class Topic extends Component {
   }
 }
 
-export default Topic
+export default TopicScene
