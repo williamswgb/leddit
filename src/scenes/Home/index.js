@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 import logo from './Kappa.gif'
 import './style.css'
-import { showNotificationWithTimeout } from './data/notifications/action'
 
 import Button from 'components/Button'
 
@@ -44,9 +42,4 @@ class HomeScene extends Component {
   }
 }
 
-export default withRouter(connect((state) => {
-  const { notifications } = state.Home.data
-  return {
-    notifications: notifications
-  }
-}, { showNotificationWithTimeout })(HomeScene))
+export default HomeScene
