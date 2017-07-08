@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Redirect } from 'react-router-dom'
 
 import Button from 'components/Button'
@@ -6,7 +6,7 @@ import Button from 'components/Button'
 import logo from './images/Kappa.gif'
 import './style.css'
 
-class HomeScene extends Component {
+class HomeScene extends PureComponent {
   state = { redirect: false }
 
   enter = () => {
