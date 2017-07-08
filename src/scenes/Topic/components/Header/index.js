@@ -32,4 +32,6 @@ const Header = () => (
   </div>
 )
 
+Header.displayName = 'Topic Header'
+
 export default Header

@@ -1,10 +1,11 @@
 import React from 'react'
+import { shape, string, arrayOf } from 'prop-types'
 
 import Component from 'components'
 
 import './style.css'
 
-const NavBar = ({ match, links }) => (
+const NavBar = ({ links }) => (
   <div className="NavBar">
     {links.map((link, i) =>
       <Component.TextLink
@@ -15,4 +16,15 @@ const NavBar = ({ match, links }) => (
   </div>
 )
 
+NavBar.displayName = 'Navigation Bar'
+
+NavBar.propStyle = {
+  links: arrayOf(shape({
+    to: string,
+    text: string,
+  }))
+}
+NavBar.defaultProps = {
+  links: [],
+}
 export default NavBar

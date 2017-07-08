@@ -1,26 +1,11 @@
 import React, { PureComponent } from 'react'
-import { object, func, bool } from 'prop-types'
+import { shape, string, func, bool } from 'prop-types'
 
 import Component from 'components'
+
 import './style.css'
 
 class FormView extends PureComponent {
-  static propTypes = {
-    loading: bool,
-    form: object,
-    error: object,
-    onFormChange: func,
-    onSubmit: func,
-  }
-
-  static defaultProps = {
-    loading: false,
-    form: {},
-    error: {},
-    onFormChange: null,
-    onSubmit: null,
-  }
-
   renderTitleInput() {
     const { form, onFormChange, error, loading } = this.props;
     return (
@@ -77,5 +62,30 @@ class FormView extends PureComponent {
     )
   }
 }
+
+FormView.displayName = 'Topic Form View'
+
+FormView.propTypes = {
+  loading: bool,
+  form: shape({
+    title: string,
+    text: string,
+  }),
+  error: shape({
+    title: string,
+    text: string,
+  }),
+  onFormChange: func,
+  onSubmit: func,
+}
+
+FormView.defaultProps = {
+  loading: false,
+  form: {},
+  error: {},
+  onFormChange: null,
+  onSubmit: null,
+}
+
 
 export default FormView

@@ -42,4 +42,6 @@ class Home extends PureComponent {
   }
 }
 
+Home.displayName = 'Home'
+
 export default Home

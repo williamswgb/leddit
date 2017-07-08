@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
-import { object, number, func,string } from 'prop-types'
+import { shape, number, func, string } from 'prop-types'
 import classNames from 'classnames'
 import moment from 'moment'
 
@@ -11,20 +11,6 @@ import ItemComponent from './components'
 import './style.css'
 
 class Item extends PureComponent {
-  static propTypes = {
-    data: object,
-    index: number,
-    onClickRemove: func,
-    basePath: string,
-  }
-
-  static defaultProps = {
-    data: {},
-    index: null,
-    onClickRemove: null,
-    basePath: '',
-  }
-
   state = {
     isExpanded: Helper.isNullOrUndefined(this.props.index),
   }
@@ -66,19 +52,22 @@ class Item extends PureComponent {
   }
 
   renderFooter() {
-    const { data, index, basePath } = this.props
+    const { data, index, basePath, onClickRemove } = this.props
     const footerClassName = classNames('Item-footer', {
       'Item-footer--no-index': Helper.isNullOrUndefined(index)
     })
+
     return (
       <div className={footerClassName}>
         <Component.TextLink to={`${basePath}/${data.id}/update`}>
           <span className="Item-footer-link">update</span>
         </Component.TextLink>
-
-        <span onClick={this.handleClickRemove} className="Item-footer-link">
-          remove
-        </span>
+        {
+          Helper.isNullOrUndefined(onClickRemove) ? null :
+          <span onClick={this.handleClickRemove} className="Item-footer-link">
+            remove
+          </span>
+        }
       </div>
     )
   }
@@ -127,6 +116,28 @@ class Item extends PureComponent {
       </div>
     );
   }
+}
+
+Item.displayName = 'Topic Item'
+
+Item.propTypes = {
+  data: shape({
+    id: number,
+    title: string,
+    text: string,
+    updatedAt: string,
+    vote: number,
+  }),
+  index: number,
+  onClickRemove: func,
+  basePath: string,
+}
+
+Item.defaultProps = {
+  data: {},
+  index: null,
+  onClickRemove: null,
+  basePath: '',
 }
 
 export default withRouter(Item)

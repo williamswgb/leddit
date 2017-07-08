@@ -7,24 +7,6 @@ import TopicComponent from 'scenes/Topic/components'
 import './style.css'
 
 class ListView extends PureComponent {
-  static propTypes = {
-    maxItems: number,
-    page: number,
-    data: array,
-    removeTopic: func,
-    onClickNext: func,
-    onClickPrev: func,
-  }
-
-  static defaultProps = {
-    maxItems: null,
-    page: 1,
-    data: [],
-    removeTopic: null,
-    onClickNext: null,
-    onClickPrev: null,
-  }
-
   renderList() {
     const { data, removeTopic, page, maxItems } = this.props
 
@@ -64,4 +46,25 @@ class ListView extends PureComponent {
     )
   }
 }
+
+ListView.displayName = 'Topic List View'
+
+ListView.propTypes = {
+  maxItems: number,
+  page: number,
+  data: array,
+  removeTopic: func,
+  onClickNext: func,
+  onClickPrev: func,
+}
+
+ListView.defaultProps = {
+  maxItems: null,
+  page: 1,
+  data: [],
+  removeTopic: null,
+  onClickNext: null,
+  onClickPrev: null,
+}
+
 export default ListView;

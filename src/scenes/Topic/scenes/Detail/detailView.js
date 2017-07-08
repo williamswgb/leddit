@@ -13,6 +13,8 @@ const DetailView = ({ data, basePath, onClickRemove }) => (
   </div>
 )
 
+DetailView.displayName = 'Topic Detail View'
+
 DetailView.propTypes = {
   data: object,
   basePath: string,

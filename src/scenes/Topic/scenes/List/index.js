@@ -15,22 +15,6 @@ import ListView from './listView.js'
 const MAX_ITEMS_PER_PAGE = 20;
 
 class ListContainer extends Component {
-  static propTypes = {
-    data: array,
-    match: object,
-    orderTopics: func,
-    removeTopic: func,
-    realDataLength: number,
-  }
-
-  static defaultProps = {
-    data: [],
-    match: {},
-    orderTopics: null,
-    removeTopic: null,
-    realDataLength: 0,
-  }
-
   componentWillMount() {
     this.orderTopics(this.props.match)
   }
@@ -108,6 +92,26 @@ class ListContainer extends Component {
       />
     )
   }
+}
+
+ListContainer.displayName = 'Topic List Container'
+
+ListContainer.propTypes = {
+  data: array,
+  match: object,
+  location: object,
+  orderTopics: func,
+  removeTopic: func,
+  realDataLength: number,
+}
+
+ListContainer.defaultProps = {
+  data: [],
+  match: {},
+  location: object,
+  orderTopics: null,
+  removeTopic: null,
+  realDataLength: 0,
 }
 
 export default withRouter(connect((state, props) => {

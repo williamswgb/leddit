@@ -9,16 +9,6 @@ import { remove as removeTopic } from 'scenes/Topic/data/topics/action'
 import DetailView from './detailView.js'
 
 class DetailContainer extends Component {
-  static propTypes = {
-    data: object,
-    removeTopic: func,
-  }
-
-  static defaultProps = {
-    data: null,
-    removeTopic: null,
-  }
-
   removeTopic = (id) => {
     if (this.props.removeTopic) {
       this.props.removeTopic(id)
@@ -37,6 +27,18 @@ class DetailContainer extends Component {
       />
     )
   }
+}
+
+DetailContainer.displayName = 'Topic Detail Container'
+
+DetailContainer.propTypes = {
+  data: object,
+  removeTopic: func,
+}
+
+DetailContainer.defaultProps = {
+  data: null,
+  removeTopic: null,
 }
 
 export default withRouter(connect((state, props) => {

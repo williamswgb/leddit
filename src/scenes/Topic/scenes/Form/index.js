@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
-import { func, bool, object } from 'prop-types'
+import { func, bool, object, shape, number, string } from 'prop-types'
 
 import Helper from 'services/helper'
 import {
@@ -13,26 +13,6 @@ import {
 import FormView from './formView.js'
 
 class FormContainer extends Component {
-  static propTypes = {
-    loading: bool,
-    data: object,
-    error: object,
-    match: object,
-    createTopic: func,
-    updateTopic: func,
-    resetError: func,
-  }
-
-  static defaultProps = {
-    loading: false,
-    data: null,
-    error: {},
-    match: {},
-    createTopic: null,
-    updateTopic: null,
-    resetError: null,
-  }
-
   state = {
     form: this.getDefaultForm(this.props.data),
     success: false,
@@ -100,6 +80,34 @@ class FormContainer extends Component {
       />
     )
   }
+}
+
+FormContainer.displayName = 'Topic Form Container'
+
+FormContainer.propTypes = {
+  loading: bool,
+  data: shape({
+    id: number,
+    title: string,
+    text: string,
+    updatedAt: string,
+    vote: number,
+  }),
+  error: object,
+  match: object,
+  createTopic: func,
+  updateTopic: func,
+  resetError: func,
+}
+
+FormContainer.defaultProps = {
+  loading: false,
+  data: null,
+  error: {},
+  match: {},
+  createTopic: null,
+  updateTopic: null,
+  resetError: null,
 }
 
 export default withRouter(connect((state, props) => {

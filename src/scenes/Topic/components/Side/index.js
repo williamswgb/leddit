@@ -19,4 +19,6 @@ const Side = () => (
   </Switch>
 );
 
+Side.displayName = 'Side Panel'
+
 export default Side

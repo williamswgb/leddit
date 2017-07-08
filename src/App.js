@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Scene from 'scenes'
 
-export default function App() {
+const App = () => {
   return (
     <Switch>
       <Route exact path='/' component={Scene.Home} />
@@ -11,3 +11,7 @@ export default function App() {
     </Switch>
   )
 }
+
+App.displayName = 'App'
+
+export default App

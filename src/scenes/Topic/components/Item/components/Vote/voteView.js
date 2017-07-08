@@ -21,13 +21,16 @@ const VoteView = ({ vote, onClickVote }) => (
   </div>
 )
 
+VoteView.displayName = 'Item Vote View'
+
 VoteView.propTypes = {
   vote: number,
-  onClickVote: func,
+  onClickVote: func.isRequired,
 }
 
 VoteView.defaultProps = {
   vote: 0,
+  onClickVote: null
 }
 
 export default VoteView

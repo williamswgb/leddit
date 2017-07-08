@@ -35,4 +35,6 @@ class Topic extends PureComponent {
   }
 }
 
+Topic.displayName = 'Topic'
+
 export default Topic
