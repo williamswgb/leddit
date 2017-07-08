@@ -39,6 +39,7 @@ export const reducer = (state = initialState, action) => {
           [action.id]: {
             ...state.byHash[action.id],
             ...action.payload,
+            updatedAt: moment().format()
           }
         }
       }
