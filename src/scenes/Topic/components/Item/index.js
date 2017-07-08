@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
-import { object, number, func } from 'prop-types'
+import { object, number, func,string } from 'prop-types'
 import moment from 'moment'
 
 import TextLink from 'components/TextLink'
@@ -14,12 +14,14 @@ class Item extends PureComponent {
     data: object,
     index: number,
     onClickRemove: func,
+    basePath: string,
   }
 
   static defaultProps = {
     data: {},
     index: null,
     onClickRemove: null,
+    basePath: '',
   }
 
   state = {
@@ -35,10 +37,9 @@ class Item extends PureComponent {
   }
 
   renderTitle() {
-    const { data } = this.props
-
+    const { data, basePath } = this.props
     return (
-      <TextLink to={`/topic/${data.id}`}>
+      <TextLink to={`${basePath}/${data.id}`}>
         <span className="Item-title">{data.title}</span>
       </TextLink>
     )
@@ -66,11 +67,11 @@ class Item extends PureComponent {
   }
 
   renderFooter() {
-    const { data, index } = this.props
+    const { data, index, basePath } = this.props
     const className = `Item-footer${index === null ? ' Item-footer--no-index' : ''}`
     return (
       <div className={className}>
-        <TextLink to={`/topic/${data.id}/update`}>
+        <TextLink to={`${basePath}/${data.id}/update`}>
           <span className="Item-footer-link">update</span>
         </TextLink>
 
