@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
 import { object, func } from 'prop-types'
 
+import Helper from 'services/helper'
 import { remove as removeTopic } from 'scenes/Topic/data/topics/action'
+
 import DetailView from './detailView.js'
 
 class DetailContainer extends Component {
@@ -18,13 +20,13 @@ class DetailContainer extends Component {
   }
 
   removeTopic = (id) => {
-    if (this.props.removeTopic !== null) {
+    if (this.props.removeTopic) {
       this.props.removeTopic(id)
     }
   }
 
   render() {
-    if (this.props.data === null) {
+    if (Helper.isNullOrUndefined(this.props.data)) {
       return <Redirect to='/topic' />
     }
     return (
