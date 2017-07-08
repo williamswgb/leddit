@@ -7,6 +7,7 @@ import {
   order as orderTopics,
   remove as removeTopic
 } from 'scenes/Topic/data/topics/action'
+
 import ListView from './listView.js'
 
 class ListContainer extends Component {
@@ -40,7 +41,7 @@ class ListContainer extends Component {
   }
 
   removeTopic = (id) => {
-    if (this.props.removeTopic !== null) {
+    if (this.props.removeTopic) {
       this.props.removeTopic(id)
     }
   }
