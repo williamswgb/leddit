@@ -8,6 +8,7 @@ import {
   create as createTopic,
   update as updateTopic,
  } from 'scenes/Topic/data/topics/action'
+ import { reset as resetError } from 'scenes/Topic/action'
 
 import CreateView from './createView.js'
 
@@ -19,6 +20,7 @@ class CreateContainer extends Component {
     match: object,
     createTopic: func,
     updateTopic: func,
+    resetError: func,
   }
 
   static defaultProps = {
@@ -28,11 +30,18 @@ class CreateContainer extends Component {
     match: {},
     createTopic: null,
     updateTopic: null,
+    resetError: null,
   }
 
   state = {
     form: this.getDefaultForm(this.props.data),
     success: false,
+  }
+
+  componentWillUnmount() {
+    if (this.props.resetError) {
+      this.props.resetError()
+    }
   }
 
   getDefaultForm(data) {
@@ -100,4 +109,4 @@ export default withRouter(connect((state, props) => {
     error,
     data: data.topics.byHash[id],
   }
-}, { createTopic, updateTopic })(CreateContainer))
+}, { createTopic, updateTopic, resetError })(CreateContainer))
