@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { object, number, func,string } from 'prop-types'
 import moment from 'moment'
 
+import Helper from 'services/helper'
 import TextLink from 'components/TextLink'
 import Button from 'components/Button'
 
@@ -25,16 +26,14 @@ class Item extends PureComponent {
   }
 
   state = {
-    isExpanded: this.props.index === null,
+    isExpanded: Helper.isNullOrUndefined(this.props.index),
   }
 
-  handleClickExpand = this.props.index === null ? null : () => {
-    this.setState({ isExpanded: !this.state.isExpanded })
-  }
+  handleClickExpand = Helper.isNullOrUndefined(this.props.index) ? null :
+    () => { this.setState({ isExpanded: !this.state.isExpanded }) }
 
-  handleClickRemove = this.props.onClickRemove === null ? null : () => {
-    this.props.onClickRemove(this.props.data.id)
-  }
+  handleClickRemove = this.props.onClickRemove ? () =>
+    { this.props.onClickRemove(this.props.data.id) } : null
 
   renderTitle() {
     const { data, basePath } = this.props
@@ -46,12 +45,12 @@ class Item extends PureComponent {
   }
 
   renderButtonContainer() {
-    const { data } = this.props
+    const { data, index } = this.props
 
     return (
       <div className="Item-button-container">
         {
-          this.props.index === null || data.text === undefined || data.text.trim() === ''
+          Helper.isNullOrUndefined(index) || !Helper.isNonEmptyString(data.text)
           ? null :
           <Button
             className="Item-button"
@@ -68,7 +67,7 @@ class Item extends PureComponent {
 
   renderFooter() {
     const { data, index, basePath } = this.props
-    const className = `Item-footer${index === null ? ' Item-footer--no-index' : ''}`
+    const className = `Item-footer${Helper.isNullOrUndefined(index) ? ' Item-footer--no-index' : ''}`
     return (
       <div className={className}>
         <TextLink to={`${basePath}/${data.id}/update`}>
@@ -85,8 +84,8 @@ class Item extends PureComponent {
   renderSubContent() {
     const { data, index } = this.props
 
-    if (this.state.isExpanded && (data.text !== undefined && data.text.trim() !== '')) {
-      const className = `Item-sub-content ${index === null ? ' Item-sub-content--no-index' : ''}`
+    if (this.state.isExpanded && Helper.isNonEmptyString(data.text)) {
+      const className = `Item-sub-content ${Helper.isNullOrUndefined(index) ? ' Item-sub-content--no-index' : ''}`
       return (
         <div className={className}>
           <div>{data.text}</div>
@@ -110,8 +109,7 @@ class Item extends PureComponent {
   renderIndex() {
     const { index } = this.props
 
-    return index === null ? null :
-      <div className="Item-index">{index}</div>
+    return Helper.isNullOrUndefined(index) ? null : <div className="Item-index">{index}</div>
   }
 
   render() {
