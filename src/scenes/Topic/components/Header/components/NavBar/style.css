@@ -1,0 +1,19 @@
+.NavBar {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.NavBar-category {
+  color: #C4C4C4;
+  margin: 0rem 1.125rem;
+}
+
+.NavBar-category:hover {
+  color: #fff !important;
+}
+
+.NavBar-category--selected {
+  color: #fff !important;
+  font-weight: bold;
+}
