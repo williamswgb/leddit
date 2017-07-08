@@ -1,4 +1,5 @@
 import moment from 'moment'
+import Helper from 'services/helper'
 
 //Action Types
 export const REQUEST = 'TOPICS_REQUEST'
@@ -141,13 +142,14 @@ export const order = (path) => (
   }
 )
 
+// Local Functions
 // The validation of payload is usually done by the server
 // In this case, the validation will be done here
 const validatePayload = (payload) => {
   const error = {}
 
   //Title
-  if (!payload.title || payload.title.trim() === 0) {
+  if (!Helper.isNonEmptyString(payload.title)) {
     error.title = "Title can't be blank"
   } else if (payload.title.trim().length > 255) {
     error.title = "Length of title can't exceed 255 characters"
@@ -160,7 +162,7 @@ const validateId = (id, state) => {
   const error = {}
   const { topics } = state.Topic.data;
 
-  if (topics.byId.indexOf(id) === -1 || topics.byHash[id] === undefined) {
+  if (topics.byId.indexOf(id) === -1 || Helper.isNullOrUndefined(topics.byHash[id])) {
     error.id = "Topic not exist"
   }
 
