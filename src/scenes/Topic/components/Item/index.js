@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import { object, number, func,string } from 'prop-types'
+import classNames from 'classnames'
 import moment from 'moment'
 
 import Helper from 'services/helper'
@@ -67,9 +68,11 @@ class Item extends PureComponent {
 
   renderFooter() {
     const { data, index, basePath } = this.props
-    const className = `Item-footer${Helper.isNullOrUndefined(index) ? ' Item-footer--no-index' : ''}`
+    const footerClassName = classNames('Item-footer', {
+      'Item-footer--no-index': Helper.isNullOrUndefined(index)
+    })
     return (
-      <div className={className}>
+      <div className={footerClassName}>
         <TextLink to={`${basePath}/${data.id}/update`}>
           <span className="Item-footer-link">update</span>
         </TextLink>
@@ -85,9 +88,12 @@ class Item extends PureComponent {
     const { data, index } = this.props
 
     if (this.state.isExpanded && Helper.isNonEmptyString(data.text)) {
-      const className = `Item-sub-content ${Helper.isNullOrUndefined(index) ? ' Item-sub-content--no-index' : ''}`
+      const subContentClassName = classNames('Item-sub-content', {
+        'Item-sub-content--no-index': Helper.isNullOrUndefined(index)
+      })
+
       return (
-        <div className={className}>
+        <div className={subContentClassName}>
           <div>{data.text}</div>
         </div>
       )

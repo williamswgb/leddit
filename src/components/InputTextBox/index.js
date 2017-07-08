@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { func, string, bool } from 'prop-types'
+import classNames from 'classnames'
 
 import Helper from 'services/helper'
 
@@ -36,11 +37,13 @@ class InputTextBox extends PureComponent {
 
   renderName() {
     const { name, isRequired, isOptional } = this.props
-
+    const nameClassName = classNames('Input-name', {
+      'Input-required': isRequired,
+    })
     if (name) {
       return (
         <div className="Input-name-container">
-          <span className={`Input-name${isRequired ? ' Input-required': ''}`}>
+          <span className={nameClassName}>
             {name}
           </span>
           {!isRequired && isOptional ? <span className="Input-optional">(optional)</span>
