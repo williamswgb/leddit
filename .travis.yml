@@ -1,9 +1,13 @@
 language: node_js
 node_js:
-  - 6
+- 6
 cache:
   directories:
-    - node_modules
+  - node_modules
 script:
-  - npm test
-  - npm run build
+- npm test
+- npm run build
+deploy:
+  provider: heroku
+  api_key:
+    secure: N/xSA5n3ga6XhXDQuXDUz80wYOzY8VNtFioQxsK6T2w4wXTdaiCce7QV2W3KHQUTJCULKnGd8kD6h2vCc0zk32qJhDQw+8Vzf5EOgXzDTcTGBJ+ptmNfc0kyjQ6jJNFJqXzhvra9MYYMdOzkiCR/v9DgudAUC57XUyPV8oYQwPqeNmPBmwKaZO1KU+1fvsKSAaLK/38SJ1Ijd2+3UCW9RdGGL0wZRMpnPKZi+EUyJ8A0URLogqNCvnPAg2jURM8ttdMpBkybWonlCTwoSvpUe1FVL0QLAn1UnbL/Ds1Xnj3WUTySUla2UDiXQtRMRnVTcAHgWHO2jA6d0m4hfDLKjdoYPr9qjk/MuGIBkbAuGR8SYHbEPtX+NMT+OToiq3IlL3+ppZCDTBZVvG/1JegoQ6iBJACBJnSg9AZ3nPVclv0WT5X8Zdqi0GdIdRkMemq5FVjCKyZDnm/ds8JkeavajZdSMmt00pKS1tuv8b30gumafki2mFVirmxqaXOFLWcN8b0+E+uJxhgqNoqY7Ni2vocsS1jSqQ8X3O8uWdTQQ3rpmdAKIIhdd6BHXhOwYSE3lGp2chF3rTZwLIg3SfPAGYtuL/KnDImUDveNeCSGFYbQ7FiCiRizhEmNnJQ5268aaoUxLhixqrTxR4CUr3xzzvmb4nn+BHhsrjxdBJJhtvE=
