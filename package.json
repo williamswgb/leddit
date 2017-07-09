@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "eslint": "^4.2.0",
     "moment": "^2.18.1",
     "query-string": "^4.3.4",
     "react": "^15.6.1",
@@ -22,9 +23,5 @@
     "test": "NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "cross-env": "^5.0.1",
-    "eslint": "^4.2.0",
-    "eslint-plugin-react": "^7.1.0"
-  }
+  "devDependencies": {}
 }
