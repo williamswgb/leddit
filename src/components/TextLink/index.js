@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { NavLink } from 'react-router-dom'
-import { node, object } from 'prop-types'
+import { node } from 'prop-types'
 
 class TextLink extends PureComponent {
   render() {
@@ -23,12 +23,10 @@ TextLink.displayName = 'Text Link'
 
 TextLink.propTypes = {
   children: node,
-  style: object,
 }
 
 TextLink.defaultProps = {
   children: null,
-  style: {}
 }
 
 export default TextLink;

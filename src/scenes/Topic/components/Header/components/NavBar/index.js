@@ -24,7 +24,9 @@ NavBar.propStyle = {
     text: string,
   }))
 }
+
 NavBar.defaultProps = {
   links: [],
 }
+
 export default NavBar
