@@ -7,7 +7,7 @@ You can view it here https://leddit.herokuapp.com.
 ## Table of Contents
 
 1. [Technology](#technology)
-2. [Folder Structure](#folderstructure)
+2. [Folder Structure](#folder-structure)
 3. [Installation](#installation)
 4. [Usage](#usage)
 5. [Test](#test)
@@ -30,22 +30,20 @@ You can view it here https://leddit.herokuapp.com.
     ├── public                # Assets files
     ├── scripts               # Scripts files
     ├── src                   # Source files
+        ├── components            # Basic Components
+        ├── scenes                # Basic scenes (pages)
+        ├── services              # Basic services (util)
+        ├── src                   # Source files
+        ├── App.js                # Main app for rendering scenes
+        ├── index.js              # Index file for rendering App.js
+        ├── store.js              # Redux store configuration file
+        └── style.css             # Main app style file
     ├── .travis.yml           # Travis CI configuration file
     ├── .eslinrc.json         # Linter eslint configuration file
     ├── .gitignore            # git ignore configuration file
     ├── package-lock.json     # Installed Package activity history file
     ├── package.json          # Installed Package list
-    └── README.md
-
-├── src  
-    ├── components            # Basic Components
-    ├── scenes                # Basic scenes (pages)
-    ├── services              # Basic services (util)
-    ├── src                   # Source files
-    ├── App.js                # Main app for rendering scenes
-    ├── index.js              # Index file for rendering App.js
-    ├── store.js              # Redux store configuration file
-    └── style.css             # Main app style
+    └── README.md             # Readme file
 
 The structure of the folder and file in src are built by separating every files as much as possible.
 Every components will be separated into 2 component, presentational (View) and container (index) component.
