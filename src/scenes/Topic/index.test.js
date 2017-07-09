@@ -1,14 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Topic from './index';
 
-it('renders shallowly without crashing', () => {
-  shallow(<Topic />)
-});
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<MemoryRouter><Topic /></MemoryRouter>, div);
+describe("Topic", () => {
+  it("always renders a Topic", () => {
+    const renderedComponent = mount(<MemoryRouter><Topic /></MemoryRouter>);
+    expect(renderedComponent.find('Topic').node).toBeDefined();
+  });
 });

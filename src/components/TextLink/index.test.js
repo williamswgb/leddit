@@ -1,9 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { mount } from "enzyme";
 import { MemoryRouter } from 'react-router-dom'
 import TextLink from './index'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<MemoryRouter><TextLink to='/'/></MemoryRouter>, div);
+describe("TextLink", () => {
+  it("always renders a text link", () => {
+    const renderedComponent = mount(<MemoryRouter><TextLink to='/'/></MemoryRouter>);
+    expect(renderedComponent.find('NavLink').node).toBeDefined();
+  });
 });
