@@ -8,9 +8,16 @@ const appReducer = combineReducers({
 	Topic,
 });
 
+let middleWare;
+if (process.env.NODE_ENV === 'development') {
+	middleWare = applyMiddleware(thunk, logger)
+} else {
+	middleWare = applyMiddleware(thunk)
+}
+
 export default createStore(
 	appReducer,
-  applyMiddleware(thunk, logger),
+  middleWare,
 	compose(
 		window.devToolsExtension ? window.devToolsExtension() : f => f
 	),
