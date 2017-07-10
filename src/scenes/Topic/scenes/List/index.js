@@ -15,10 +15,12 @@ import ListView from './listView.js'
 const MAX_ITEMS_PER_PAGE = 20;
 
 class ListContainer extends Component {
+  // Before rendered, order the topics list based on the current path in the route
   componentWillMount() {
     this.orderTopics(this.props.match)
   }
 
+  // If the path changes, order the topics according to the current path in the route
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.path !== this.props.match.path) {
       this.orderTopics(nextProps.match)
@@ -51,6 +53,8 @@ class ListContainer extends Component {
     history.push(`?page=${(Number(query.page || 1) + 1)}`);
   }
 
+  // Check whether current page query allows the list to show prev button
+  // e.g. (page 2 until the last page)
   goToPrev = (query) => {
     if (Helper.isNullOrUndefined(query.page) || Number(query.page) <= 1) {
       return null
@@ -58,6 +62,8 @@ class ListContainer extends Component {
     return this.onClickPrev
   }
 
+  // Check whether current page query allows the list to show next button
+  // e.g. (page 1 until the page before the last page)
   goToNext = (query) => {
     const { realDataLength } = this.props
     const page = Helper.isNullOrUndefined(query.page) ? 1 : Number(query.page)
@@ -68,6 +74,8 @@ class ListContainer extends Component {
     return this.onClickNext
   }
 
+  // Check whether the query page show the correct page number, or it can show data between
+  // 0 to the maximum number of data in state reducer.
   checkRedirect(query, realDataLength) {
     return (!Helper.isNullOrUndefined(query.page) && isNaN(Number(query.page))) ||
       Number(query.page) < 1 || Number(query.page) > Math.ceil(realDataLength / MAX_ITEMS_PER_PAGE)
@@ -77,6 +85,7 @@ class ListContainer extends Component {
     const { location, realDataLength } = this.props
     const query = queryString.parse(location.search)
 
+    // If current query is invalid, redirect the page to its base path location.
     if (this.checkRedirect(query, realDataLength)) {
       return <Redirect to={location.pathname} />
     }
@@ -116,6 +125,9 @@ ListContainer.defaultProps = {
 
 export default withRouter(connect((state, props) => {
   const { topics } = state.Topic.data
+  // For handling number of data shown into the listView
+  // The data shown will be based on the current page number which is stored in the url as query.
+  // This will show data from index (min) until index (max) according to the current page number.
   const query = queryString.parse(props.location.search)
   const page = isNaN(Number(query.page)) || Number(query.page) >
     Math.ceil(topics.order.length / MAX_ITEMS_PER_PAGE) ? 1 : Number(query.page)

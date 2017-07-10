@@ -16,6 +16,8 @@ class DetailContainer extends Component {
   }
 
   render() {
+    // Redirect back to topic if the data for current item is not exist anymore.
+    // This is for behaviour after removing item from detail.
     if (Helper.isNullOrUndefined(this.props.data)) {
       return <Redirect to='/topic' />
     }

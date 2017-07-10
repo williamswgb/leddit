@@ -1,3 +1,5 @@
+// This file contains the list of actions and types for handling state in topic reducers
+
 import moment from 'moment'
 import Helper from 'services/helper'
 
@@ -100,6 +102,9 @@ export const downvote = (id) => (
   }
 )
 
+// Order topics based on the current path of the route,
+// This will allow the topic list to maintain the order of items
+// Otherwise, when item is being upvote / downvote, the order will keep changing
 export const order = (path) => (
   (dispatch, getState) => {
     const state = getState()
@@ -137,6 +142,7 @@ const validatePayload = (payload) => {
   return error
 }
 
+// Check whether id exists in reducer or not
 const validateId = (id, state) => {
   const error = {}
   const { topics } = state.Topic.data;

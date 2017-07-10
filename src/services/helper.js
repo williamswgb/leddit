@@ -1,3 +1,5 @@
+//This is a helper class that contain functions that can be used in every parts of the app.
+
 class Helper {
   static isEmptyObject(obj) {
     return (this.isNullOrUndefined(obj)) ||

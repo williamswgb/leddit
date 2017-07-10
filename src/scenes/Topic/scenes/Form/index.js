@@ -18,6 +18,7 @@ class FormContainer extends Component {
     success: false,
   }
 
+  // When leaving form, reset the error in the state reducer
   componentWillUnmount() {
     if (this.props.resetError) {
       this.props.resetError()
@@ -42,6 +43,8 @@ class FormContainer extends Component {
     this.setState({ form })
   }
 
+  // If id is specified, call update action to update the existing data.
+  // Otherwise call create action to create new data in reducer
   submitForm = () => {
     const { updateTopic, createTopic, match } = this.props
     const action = Helper.isNullOrUndefined(match.params.id) ? createTopic(this.state.form)
@@ -52,6 +55,7 @@ class FormContainer extends Component {
     }).catch(() => {})
   }
 
+  // If form is submitted successfully, get the redirect url and redirect the page to that url
   getRedirectUrl() {
     let to = null
     if (this.state.success) {

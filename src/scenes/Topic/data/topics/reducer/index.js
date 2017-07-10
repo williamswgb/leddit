@@ -1,3 +1,8 @@
+// This file contains the reducer that stores the state of topics data
+// that can be used by any components in the app.
+// The reducer will update its state according to the received action type
+// when an action is being called
+
 import moment from 'moment'
 
 import {

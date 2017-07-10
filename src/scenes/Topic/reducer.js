@@ -1,3 +1,8 @@
+// This reducer combine the data reducer with the other reducers that is related to Topic
+// But not necessary the real data.
+// Here is the place where we can add small important data that is related for Topic
+// E.g. loading, error, filter, etc.
+
 import { combineReducers } from 'redux'
 
 import {
